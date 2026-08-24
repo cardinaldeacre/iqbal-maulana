@@ -24,7 +24,8 @@ export const achievementSchema = z.object({
         .string()
         .trim()
         .url()
-        .or(z.literal("")),
+        .or(z.literal(""))
+        .optional(),
 
     display_order: z.coerce
         .number()
