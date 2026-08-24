@@ -7,7 +7,7 @@ import { isAdmin } from "@/lib/auth/admin";
 import { createClient } from "@/lib/supabase/server";
 import { projectSchema } from "@/lib/validations/project";
 import { validateImage } from "../validations/file";
-import { uploadProjectThumbnail } from "../services/storage";
+import { deleteStorageFolder, uploadProjectThumbnail } from "../services/storage";
 
 export async function createProject(formData: FormData) {
     const admin = await isAdmin();
@@ -172,20 +172,7 @@ export async function deleteProject(id: string) {
 
     const supabase = await createClient();
 
-    const { data: files } = await supabase.storage
-        .from("portofolio")
-        .list(`projects/${id}`);
-
-    if (files?.length) {
-        const paths = files.map(
-            (file) =>
-                `projects/${id}/${file.name}`
-        )
-
-        await supabase.storage
-            .from("portofolio")
-            .remove(paths);
-    }
+    await deleteStorageFolder(`projects/${id}`);
 
     const { error } = await supabase
         .from("projects")
