@@ -16,7 +16,7 @@ export async function getProjects() {
     return data;
 }
 
-export async function getProjectBySlug(id: string) {
+export async function getProjectById(id: string) {
     const supabase = await createClient();
 
     const { data, error } = await supabase

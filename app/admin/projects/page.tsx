@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getProjects } from "@/lib/services/projects";
+import { DeleteProjectButton } from "@/app/components/admin/projects/delete-project-button";
 
 export default async function ProjectsPage() {
     const projects = await getProjects();
@@ -66,12 +67,15 @@ export default async function ProjectsPage() {
                                     </div>
                                 </div>
 
-                                <Link
-                                    href={`/admin/projects/${project.id}/edit`}
-                                    className="text-sm font-medium"
-                                >
-                                    Edit
-                                </Link>
+                                <div className="flex items-center gap-4">
+                                    <Link
+                                        href={`/admin/projects/${project.id}/edit`}
+                                        className="text-sm font-medium"
+                                    >
+                                        Edit
+                                    </Link>
+                                    <DeleteProjectButton id={project.id} />
+                                </div>
                             </div>
                         ))}
                     </div>
