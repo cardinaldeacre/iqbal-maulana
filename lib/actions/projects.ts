@@ -6,6 +6,8 @@ import { redirect } from "next/navigation";
 import { isAdmin } from "@/lib/auth/admin";
 import { createClient } from "@/lib/supabase/server";
 import { projectSchema } from "@/lib/validations/project";
+import { validateImage } from "../validations/file";
+import { uploadProjectThumbnail } from "../services/storage";
 
 export async function createProject(formData: FormData) {
     const admin = await isAdmin();
@@ -36,7 +38,16 @@ export async function createProject(formData: FormData) {
     }
 
     const supabase = await createClient();
-    const { error } = await supabase
+
+    const {
+        data: { user },
+        error: userError,
+    } = await supabase.auth.getUser();
+
+    console.log("Storage user:", user?.id);
+    console.log("Storage auth error:", userError);
+
+    const { data: project, error } = await supabase
         .from("projects")
         .insert({
             ...parsed.data,
@@ -46,10 +57,33 @@ export async function createProject(formData: FormData) {
 
             live_url:
                 parsed.data.live_url || null,
-        });
+        })
+        .select("id")
+        .single();
 
     if (error) {
         throw new Error(error.message);
+    }
+
+    if (!project) {
+        throw new Error("Failed to create project.");
+    }
+
+    const thumbnail = formData.get("thumbnail") as File | null;
+
+    if (thumbnail instanceof File && thumbnail.size > 0) {
+        validateImage(thumbnail);
+
+        const { publicUrl } = await uploadProjectThumbnail(project.id, thumbnail);
+
+        const { error: thumbnailError } = await supabase
+            .from("projects")
+            .update({ thumbnail_url: publicUrl })
+            .eq("id", project.id);
+
+        if (thumbnailError) {
+            throw new Error(thumbnailError.message);
+        }
     }
 
     revalidatePath("/admin/projects");
@@ -100,6 +134,23 @@ export async function updateProject(id: string, formData: FormData) {
         })
         .eq("id", id);
 
+    const thumbnail = formData.get("thumbnail") as File | null;
+
+    if (thumbnail instanceof File && thumbnail.size > 0) {
+        validateImage(thumbnail);
+
+        const { publicUrl } = await uploadProjectThumbnail(id, thumbnail);
+
+        const { error: thumbnailError } = await supabase
+            .from("projects")
+            .update({ thumbnail_url: publicUrl })
+            .eq("id", id);
+
+        if (thumbnailError) {
+            throw new Error(thumbnailError.message);
+        }
+    }
+
     if (error) {
         throw new Error(error.message);
     }
@@ -120,6 +171,22 @@ export async function deleteProject(id: string) {
     }
 
     const supabase = await createClient();
+
+    const { data: files } = await supabase.storage
+        .from("portofolio")
+        .list(`projects/${id}`);
+
+    if (files?.length) {
+        const paths = files.map(
+            (file) =>
+                `projects/${id}/${file.name}`
+        )
+
+        await supabase.storage
+            .from("portofolio")
+            .remove(paths);
+    }
+
     const { error } = await supabase
         .from("projects")
         .delete()

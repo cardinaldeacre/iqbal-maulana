@@ -72,6 +72,22 @@ export default function NewProjectPage() {
 
                 <div>
                     <label
+                        htmlFor="thumbnail"
+                        className="mb-2 block"
+                    >
+                        Thumbnail
+                    </label>
+
+                    <input
+                        id="thumbnail"
+                        name="thumbnail"
+                        type="file"
+                        accept="image/png,image/jpeg,image/webp"
+                    />
+                </div>
+
+                <div>
+                    <label
                         htmlFor="github_url"
                         className="mb-2 block text-sm font-medium"
                     >
