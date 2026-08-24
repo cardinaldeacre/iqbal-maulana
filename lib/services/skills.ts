@@ -14,3 +14,19 @@ export async function getSkills() {
 
     return data;
 }
+
+export async function getSkillById(id: string) {
+    const supabase = await createClient();
+
+    const { data, error } = await supabase
+        .from("skills")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+    if (error) {
+        throw new Error(error.message);
+    }
+
+    return data;
+}
