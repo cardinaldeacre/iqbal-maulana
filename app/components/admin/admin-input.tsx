@@ -1,59 +1,47 @@
-import type { InputHTMLAttributes } from "react";
+import type {InputHTMLAttributes} from 'react';
 
-type AdminInputProps =
-    InputHTMLAttributes<HTMLInputElement> & {
-        label: string;
-        error?: string;
-        hint?: string;
-    };
+type AdminInputProps = InputHTMLAttributes<HTMLInputElement> & {
+	label: string;
+	error?: string;
+	hint?: string;
+};
 
 export function AdminInput({
-    label,
-    error,
-    hint,
-    id,
-    name,
-    className = "",
-    ...props
+	label,
+	error,
+	hint,
+	id,
+	name,
+	className = '',
+	...props
 }: AdminInputProps) {
-    const inputId = id ?? name;
+	const inputId = id ?? name;
 
-    return (
-        <div className="space-y-2">
-            <label
-                htmlFor={inputId}
-                className="block text-sm font-medium text-foreground"
-            >
-                {label}
-            </label>
+	return (
+		<div className="space-y-2">
+			<label htmlFor={inputId} className="block text-sm font-medium text-foreground">
+				{label}
+			</label>
 
-            <input
-                id={inputId}
-                name={name}
-                className={[
-                    "w-full rounded-xl border border-border",
-                    "bg-surface px-4 py-3 text-foreground",
-                    "placeholder:text-muted",
-                    "outline-none transition",
-                    "focus:border-accent focus:ring-2 focus:ring-accent/15",
-                    "disabled:cursor-not-allowed disabled:opacity-50",
-                    error ? "border-red-500" : "",
-                    className,
-                ].join(" ")}
-                {...props}
-            />
+			<input
+				id={inputId}
+				name={name}
+				className={[
+					'w-full rounded-xl border border-border',
+					'bg-surface px-4 py-3 text-graphite',
+					'placeholder:text-muted',
+					'outline-none transition',
+					'focus:border-accent focus:ring-2 focus:ring-accent/15',
+					'disabled:cursor-not-allowed disabled:opacity-50',
+					error ? 'border-red-500' : '',
+					className,
+				].join(' ')}
+				{...props}
+			/>
 
-            {hint && !error && (
-                <p className="text-xs text-muted">
-                    {hint}
-                </p>
-            )}
+			{hint && !error && <p className="text-xs text-muted">{hint}</p>}
 
-            {error && (
-                <p className="text-xs text-red-600">
-                    {error}
-                </p>
-            )}
-        </div>
-    );
+			{error && <p className="text-xs text-red-600">{error}</p>}
+		</div>
+	);
 }

@@ -14,7 +14,7 @@ export function AdminSidebar() {
 		<aside
 			className="
                 flex min-h-screen w-64 shrink-0 flex-col
-                border-r border-gold/20
+                border-r-4 border-gold/40
                 bg-charcoal p-5
                 shadow-[1px_0_0_rgba(179,145,82,0.08)]
                 ">
