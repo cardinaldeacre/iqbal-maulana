@@ -36,6 +36,34 @@
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
+
+	--color-surface: var(--surface);
+	--color-surface-soft: var(--surface-soft);
+
+	--color-muted: var(--muted);
+
+	--color-border: var(--border);
+
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+
+	--color-accent: var(--accent);
+	--color-accent-hover: var(--accent-hover);
+	--color-accent-foreground: var(--accent-foreground);
+
+	--color-charcoal: var(--color-charcoal);
+	--color-graphite: var(--color-graphite);
+	--color-stone: var(--color-stone);
+
+	--color-gold-dark: var(--color-gold-dark);
+	--color-gold: var(--color-gold);
+	--color-gold-light: var(--color-gold-light);
+
+	--color-sand: var(--color-sand);
+	--color-sand-light: var(--color-sand-light);
+
+	--color-ivory: var(--color-ivory);
+
 	--font-sans: var(--font-geist-sans);
 	--font-mono: var(--font-geist-mono);
 }
