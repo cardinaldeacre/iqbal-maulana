@@ -1,37 +1,34 @@
 import Link from "next/link";
 
+import {
+    AdminEmptyState,
+    AdminPageHeader,
+} from "@/app/components/admin";
+
+import { DeleteExperienceButton } from "@/app/components/admin/experiences/delete-experience-button";
 import { getExperiences } from "@/lib/services/experiences";
-import { DeleteExperienceButton } from "@/app/components/admin/experiences/delete-experience-button copy";
 
 export default async function ExperiencesPage() {
     const experiences = await getExperiences();
 
     return (
         <main className="p-8">
-            <div className="flex items-center justify-between">
-                <div>
-                    <h1 className="text-3xl font-bold">
-                        Experiences
-                    </h1>
-
-                    <p className="mt-1 text-neutral-500">
-                        Manage work and organizational experiences.
-                    </p>
-                </div>
-
-                <Link
-                    href="/admin/experiences/new"
-                    className="rounded-lg bg-black px-4 py-2 text-white"
-                >
-                    + Add Experience
-                </Link>
-            </div>
+            <AdminPageHeader
+                title="Experiences"
+                description="Manage work and organizational experiences."
+                action={
+                    <Link
+                        href="/admin/experiences/new"
+                        className="rounded-lg bg-black px-4 py-2 text-white"
+                    >
+                        + Add Experience
+                    </Link>
+                }
+            />
 
             <div className="mt-8 space-y-4">
                 {experiences.length === 0 ? (
-                    <div className="rounded-xl border p-8 text-center text-neutral-500">
-                        No experiences yet.
-                    </div>
+                    <AdminEmptyState message="No experiences yet." />
                 ) : (
                     experiences.map((experience) => (
                         <div
@@ -56,13 +53,18 @@ export default async function ExperiencesPage() {
                                 </p>
                             </div>
 
-                            <Link
-                                href={`/admin/experiences/${experience.id}/edit`}
-                                className="text-sm font-medium"
-                            >
-                                Edit
-                            </Link>
-                            <DeleteExperienceButton id={experience.id} />
+                            <div className="flex items-center gap-4">
+                                <Link
+                                    href={`/admin/experiences/${experience.id}/edit`}
+                                    className="text-sm font-medium"
+                                >
+                                    Edit
+                                </Link>
+
+                                <DeleteExperienceButton
+                                    id={experience.id}
+                                />
+                            </div>
                         </div>
                     ))
                 )}

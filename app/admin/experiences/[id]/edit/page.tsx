@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import {
+    AdminCheckbox,
+    AdminInput,
+    AdminSelect,
+    AdminSubmitButton,
+    AdminTextarea,
+} from "@/app/components/admin";
+import { techStackOptions } from "@/app/constants/admin-options";
 import { updateExperience } from "@/lib/actions/experiences";
 import { getExperienceById } from "@/lib/services/experiences";
 
@@ -44,84 +52,69 @@ export default async function EditExperiencePage({
                 action={updateExperienceWithId}
                 className="mt-8 space-y-6"
             >
-                <input
+                <AdminInput
+                    label="Organization"
                     name="organization"
                     required
                     defaultValue={experience.organization}
-                    className="w-full rounded-lg border p-3"
                 />
 
-                <input
+                <AdminInput
+                    label="Position"
                     name="position"
                     required
                     defaultValue={experience.position}
-                    className="w-full rounded-lg border p-3"
                 />
 
-                <textarea
+                <AdminTextarea
+                    label="Description"
                     name="description"
                     rows={5}
                     defaultValue={experience.description ?? ""}
-                    className="w-full rounded-lg border p-3"
                 />
 
                 <div className="grid grid-cols-2 gap-4">
-                    <input
+                    <AdminInput
+                        label="Start Date"
                         name="start_date"
                         type="date"
                         required
                         defaultValue={experience.start_date}
-                        className="rounded-lg border p-3"
                     />
 
-                    <input
+                    <AdminInput
+                        label="End Date"
                         name="end_date"
                         type="date"
                         defaultValue={experience.end_date ?? ""}
-                        className="rounded-lg border p-3"
                     />
                 </div>
 
-                <label className="flex items-center gap-3">
-                    <input
-                        name="is_current"
-                        type="checkbox"
-                        defaultChecked={experience.is_current}
-                    />
+                <AdminCheckbox
+                    label="Current position"
+                    name="is_current"
+                    defaultChecked={experience.is_current}
+                />
 
-                    Current position
-                </label>
-
-                <select
+                <AdminSelect
+                    label="Tech Stack"
                     name="tech_stack"
+                    options={techStackOptions}
                     multiple
                     defaultValue={experience.tech_stack}
-                    className="w-full rounded-lg border p-3"
-                >
-                    <option value="Next.js">Next.js</option>
-                    <option value="React">React</option>
-                    <option value="Laravel">Laravel</option>
-                    <option value="Flutter">Flutter</option>
-                    <option value="Node.js">Node.js</option>
-                    <option value="Express.js">Express.js</option>
-                    <option value="PostgreSQL">PostgreSQL</option>
-                    <option value="Supabase">Supabase</option>
-                </select>
+                />
 
-                <input
+                <AdminInput
+                    label="Display Order"
                     name="display_order"
                     type="number"
                     min="0"
                     defaultValue={experience.display_order}
-                    className="w-full rounded-lg border p-3"
                 />
 
-                <button
-                    type="submit"
-                    className="rounded-lg bg-black px-5 py-3 text-white"
-                >
+                <AdminSubmitButton>
                     Save Changes
-                </button>
+                </AdminSubmitButton>
             </form>
         </main>
     );

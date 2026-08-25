@@ -1,3 +1,10 @@
+import {
+    AdminFileInput,
+    AdminInput,
+    AdminPageHeader,
+    AdminSubmitButton,
+    AdminTextarea,
+} from "@/app/components/admin";
 import { saveProfile } from "@/lib/actions/profile";
 import { getProfile } from "@/lib/services/profile";
 
@@ -12,164 +19,87 @@ export default async function SettingsPage() {
 
     return (
         <main className="mx-auto max-w-3xl p-8">
-            <div>
-                <h1 className="text-3xl font-bold">
-                    Profile Settings
-                </h1>
-
-                <p className="mt-1 text-neutral-500">
-                    Manage information displayed on your
-                    portfolio.
-                </p>
-            </div>
+            <AdminPageHeader
+                title="Profile Settings"
+                description="Manage information displayed on your public portfolio."
+            />
 
             <form
                 action={saveProfileWithId}
                 className="mt-8 space-y-6"
             >
-                <div>
-                    <label
-                        htmlFor="name"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        Name
-                    </label>
+                <AdminInput
+                    label="Name"
+                    name="name"
+                    required
+                    defaultValue={profile?.name ?? ""}
+                />
 
-                    <input
-                        id="name"
-                        name="name"
-                        required
-                        defaultValue={profile?.name ?? ""}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                <AdminInput
+                    label="Headline"
+                    name="headline"
+                    required
+                    placeholder="Full-Stack Developer"
+                    defaultValue={profile?.headline ?? ""}
+                />
 
-                <div>
-                    <label
-                        htmlFor="headline"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        Headline
-                    </label>
+                <AdminTextarea
+                    label="Bio"
+                    name="bio"
+                    rows={7}
+                    required
+                    defaultValue={profile?.bio ?? ""}
+                />
 
-                    <input
-                        id="headline"
-                        name="headline"
-                        required
-                        placeholder="Full-Stack Developer"
-                        defaultValue={profile?.headline ?? ""}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                <AdminInput
+                    label="Public Email"
+                    name="email"
+                    type="email"
+                    required
+                    defaultValue={profile?.email ?? ""}
+                />
 
-                <div>
-                    <label
-                        htmlFor="bio"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        Bio
-                    </label>
+                <AdminInput
+                    label="GitHub URL"
+                    name="github_url"
+                    type="url"
+                    defaultValue={profile?.github_url ?? ""}
+                />
 
-                    <textarea
-                        id="bio"
-                        name="bio"
-                        required
-                        rows={7}
-                        defaultValue={profile?.bio ?? ""}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                <AdminInput
+                    label="LinkedIn URL"
+                    name="linkedin_url"
+                    type="url"
+                    defaultValue={profile?.linkedin_url ?? ""}
+                />
 
-                <div>
-                    <label
-                        htmlFor="email"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        Public Email
-                    </label>
+                {profile?.avatar_url && (
+                    <div>
+                        <p className="mb-2 text-sm font-medium">
+                            Current Avatar
+                        </p>
 
-                    <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        defaultValue={profile?.email ?? ""}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                        <img
+                            src={profile.avatar_url}
+                            alt={profile.name}
+                            className="h-24 w-24 rounded-full object-cover"
+                        />
+                    </div>
+                )}
 
-                <div>
-                    <label
-                        htmlFor="github_url"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        GitHub URL
-                    </label>
+                <AdminFileInput
+                    label={
+                        profile?.avatar_url
+                            ? "Replace Avatar"
+                            : "Avatar"
+                    }
+                    name="avatar"
+                    accept="image/jpeg,image/png,image/webp"
+                />
 
-                    <input
-                        id="github_url"
-                        name="github_url"
-                        type="url"
-                        defaultValue={
-                            profile?.github_url ?? ""
-                        }
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
-
-                <div>
-                    <label
-                        htmlFor="linkedin_url"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        LinkedIn URL
-                    </label>
-
-                    <input
-                        id="linkedin_url"
-                        name="linkedin_url"
-                        type="url"
-                        defaultValue={
-                            profile?.linkedin_url ?? ""
-                        }
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
-
-                <div>
-                    <label
-                        htmlFor="avatar"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        Avatar
-                    </label>
-
-                    {profile?.avatar_url && (
-                        <div className="mb-3">
-                            {/* sementara pakai img,
-                  nanti kita ganti next/image */}
-                            <img
-                                src={profile.avatar_url}
-                                alt="Current avatar"
-                                className="h-24 w-24 rounded-full object-cover"
-                            />
-                        </div>
-                    )}
-
-                    <input
-                        id="avatar"
-                        name="avatar"
-                        type="file"
-                        accept="image/jpeg,image/png,image/webp"
-                    />
-                </div>
-
-                <button
-                    type="submit"
-                    className="rounded-lg bg-black px-5 py-3 text-white"
-                >
+                <AdminSubmitButton>
                     Save Profile
-                </button>
+                </AdminSubmitButton>
             </form>
         </main>
     );

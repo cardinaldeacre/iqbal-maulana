@@ -1,6 +1,15 @@
 import Link from "next/link";
 
+import {
+    AdminCheckbox,
+    AdminInput,
+    AdminSelect,
+    AdminSubmitButton,
+    AdminTextarea,
+} from "@/app/components/admin";
+import { techStackOptions } from "@/app/constants/admin-options";
 import { createExperience } from "@/lib/actions/experiences";
+
 
 export default function NewExperiencePage() {
     return (
@@ -20,80 +29,62 @@ export default function NewExperiencePage() {
                 action={createExperience}
                 className="mt-8 space-y-6"
             >
-                <input
+                <AdminInput
+                    label="Organization"
                     name="organization"
-                    placeholder="Organization"
                     required
-                    className="w-full rounded-lg border p-3"
                 />
 
-                <input
+                <AdminInput
+                    label="Position"
                     name="position"
-                    placeholder="Position"
                     required
-                    className="w-full rounded-lg border p-3"
                 />
 
-                <textarea
+                <AdminTextarea
+                    label="Description"
                     name="description"
-                    placeholder="Description"
                     rows={5}
-                    className="w-full rounded-lg border p-3"
                 />
 
                 <div className="grid grid-cols-2 gap-4">
-                    <input
+                    <AdminInput
+                        label="Start Date"
                         name="start_date"
                         type="date"
                         required
-                        className="rounded-lg border p-3"
                     />
 
-                    <input
+                    <AdminInput
+                        label="End Date"
                         name="end_date"
                         type="date"
-                        className="rounded-lg border p-3"
                     />
                 </div>
 
-                <label className="flex items-center gap-3">
-                    <input
-                        name="is_current"
-                        type="checkbox"
-                    />
+                <AdminCheckbox
+                    label="Current position"
+                    name="is_current"
+                />
 
-                    Current position
-                </label>
-
-                <select
+                <AdminSelect
+                    label="Tech Stack"
                     name="tech_stack"
+                    options={techStackOptions}
                     multiple
-                    className="w-full rounded-lg border p-3"
-                >
-                    <option value="Next.js">Next.js</option>
-                    <option value="React">React</option>
-                    <option value="Laravel">Laravel</option>
-                    <option value="Flutter">Flutter</option>
-                    <option value="Node.js">Node.js</option>
-                    <option value="Express.js">Express.js</option>
-                    <option value="PostgreSQL">PostgreSQL</option>
-                    <option value="Supabase">Supabase</option>
-                </select>
+                />
 
-                <input
+                <AdminInput
+                    label="Display Order"
                     name="display_order"
                     type="number"
                     min="0"
                     defaultValue="0"
-                    className="w-full rounded-lg border p-3"
                 />
 
-                <button
-                    type="submit"
-                    className="rounded-lg bg-black px-5 py-3 text-white"
-                >
+                <AdminSubmitButton>
                     Create Experience
-                </button>
+                </AdminSubmitButton>
             </form>
         </main>
     );

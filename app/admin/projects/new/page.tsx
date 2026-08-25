@@ -1,5 +1,14 @@
 import Link from "next/link";
 
+import {
+    AdminCheckbox,
+    AdminFileInput,
+    AdminInput,
+    AdminSelect,
+    AdminSubmitButton,
+    AdminTextarea,
+} from "@/app/components/admin";
+import { techStackOptions } from "@/app/constants/admin-options";
 import { createProject } from "@/lib/actions/projects";
 
 export default function NewProjectPage() {
@@ -9,7 +18,7 @@ export default function NewProjectPage() {
                 href="/admin/projects"
                 className="text-sm text-neutral-500"
             >
-                ← Back to Projects
+                ← Back
             </Link>
 
             <h1 className="mt-6 text-3xl font-bold">
@@ -20,170 +29,67 @@ export default function NewProjectPage() {
                 action={createProject}
                 className="mt-8 space-y-6"
             >
-                <div>
-                    <label
-                        htmlFor="title"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        Project Title
-                    </label>
+                <AdminInput
+                    label="Project Title"
+                    name="title"
+                    required
+                />
 
-                    <input
-                        id="title"
-                        name="title"
-                        required
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                <AdminInput
+                    label="Slug"
+                    name="slug"
+                    required
+                    placeholder="waristmate"
+                />
 
-                <div>
-                    <label
-                        htmlFor="slug"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        Slug
-                    </label>
+                <AdminTextarea
+                    label="Description"
+                    name="description"
+                    rows={6}
+                    required
+                />
 
-                    <input
-                        id="slug"
-                        name="slug"
-                        required
-                        placeholder="waristmate"
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                <AdminInput
+                    label="GitHub URL"
+                    name="github_url"
+                    type="url"
+                />
 
-                <div>
-                    <label
-                        htmlFor="description"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        Description
-                    </label>
+                <AdminInput
+                    label="Live URL"
+                    name="live_url"
+                    type="url"
+                />
 
-                    <textarea
-                        id="description"
-                        name="description"
-                        required
-                        rows={6}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                <AdminSelect
+                    label="Tech Stack"
+                    name="tech_stack"
+                    multiple
+                    options={techStackOptions}
+                />
 
-                <div>
-                    <label
-                        htmlFor="thumbnail"
-                        className="mb-2 block"
-                    >
-                        Thumbnail
-                    </label>
+                <AdminInput
+                    label="Display Order"
+                    name="display_order"
+                    type="number"
+                    min="0"
+                    defaultValue="0"
+                />
 
-                    <input
-                        id="thumbnail"
-                        name="thumbnail"
-                        type="file"
-                        accept="image/png,image/jpeg,image/webp"
-                    />
-                </div>
+                <AdminCheckbox
+                    label="Featured Project"
+                    name="is_featured"
+                />
 
-                <div>
-                    <label
-                        htmlFor="github_url"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        GitHub URL
-                    </label>
+                <AdminFileInput
+                    label="Thumbnail"
+                    name="thumbnail"
+                    accept="image/jpeg,image/png,image/webp"
+                />
 
-                    <input
-                        id="github_url"
-                        name="github_url"
-                        type="url"
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
-
-                <div>
-                    <label
-                        htmlFor="live_url"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        Live URL
-                    </label>
-
-                    <input
-                        id="live_url"
-                        name="live_url"
-                        type="url"
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
-
-                <div>
-                    <label
-                        htmlFor="tech_stack"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        Tech Stack
-                    </label>
-
-                    <select
-                        id="tech_stack"
-                        name="tech_stack"
-                        multiple
-                        className="w-full rounded-lg border p-3"
-                    >
-                        <option value="Laravel">Laravel</option>
-                        <option value="Yii2">Yii2</option>
-                        <option value="Next.js">Next.js</option>
-                        <option value="React">React</option>
-                        <option value="Flutter">Flutter</option>
-                        <option value="Kotlin">Kotlin</option>
-                        <option value="Tailwind">Tailwind</option>
-                        <option value="Python">Python</option>
-                        <option value="Supabase">Supabase</option>
-                        <option value="Docker">Docker</option>
-                        <option value="PostgreSQL">
-                            PostgreSQL
-                        </option>
-                        <option value="MySQL">
-                            MySQL
-                        </option>
-                    </select>
-                </div>
-
-                <div>
-                    <label
-                        htmlFor="display_order"
-                        className="mb-2 block text-sm font-medium"
-                    >
-                        Display Order
-                    </label>
-
-                    <input
-                        id="display_order"
-                        name="display_order"
-                        type="number"
-                        min="0"
-                        defaultValue="0"
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
-
-                <label className="flex items-center gap-3">
-                    <input
-                        name="is_featured"
-                        type="checkbox"
-                    />
-
-                    Featured Project
-                </label>
-
-                <button
-                    type="submit"
-                    className="rounded-lg bg-black px-5 py-3 font-medium text-white"
-                >
+                <AdminSubmitButton>
                     Create Project
-                </button>
+                </AdminSubmitButton>
             </form>
         </main>
     );

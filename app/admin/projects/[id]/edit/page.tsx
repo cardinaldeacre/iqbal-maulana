@@ -1,6 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import {
+    AdminCheckbox,
+    AdminFileInput,
+    AdminInput,
+    AdminSelect,
+    AdminSubmitButton,
+    AdminTextarea,
+} from "@/app/components/admin";
+import { techStackOptions } from "@/app/constants/admin-options";
 import { updateProject } from "@/lib/actions/projects";
 import { getProjectById } from "@/lib/services/projects";
 
@@ -32,7 +41,7 @@ export default async function EditProjectPage({
                 href="/admin/projects"
                 className="text-sm text-neutral-500"
             >
-                ← Back to Projects
+                ← Back
             </Link>
 
             <h1 className="mt-6 text-3xl font-bold">
@@ -43,162 +52,87 @@ export default async function EditProjectPage({
                 action={updateProjectWithId}
                 className="mt-8 space-y-6"
             >
-                <div>
-                    <label htmlFor="title">
-                        Project Title
-                    </label>
+                <AdminInput
+                    label="Project Title"
+                    name="title"
+                    required
+                    defaultValue={project.title}
+                />
 
-                    <input
-                        id="title"
-                        name="title"
-                        required
-                        defaultValue={project.title}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                <AdminInput
+                    label="Slug"
+                    name="slug"
+                    required
+                    defaultValue={project.slug}
+                />
 
-                <div>
-                    <label htmlFor="slug">
-                        Slug
-                    </label>
+                <AdminTextarea
+                    label="Description"
+                    name="description"
+                    rows={6}
+                    required
+                    defaultValue={project.description}
+                />
 
-                    <input
-                        id="slug"
-                        name="slug"
-                        required
-                        defaultValue={project.slug}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                <AdminInput
+                    label="GitHub URL"
+                    name="github_url"
+                    type="url"
+                    defaultValue={project.github_url ?? ""}
+                />
 
-                <div>
-                    <label htmlFor="description">
-                        Description
-                    </label>
+                <AdminInput
+                    label="Live URL"
+                    name="live_url"
+                    type="url"
+                    defaultValue={project.live_url ?? ""}
+                />
 
-                    <textarea
-                        id="description"
-                        name="description"
-                        rows={6}
-                        required
-                        defaultValue={project.description}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                <AdminSelect
+                    label="Tech Stack"
+                    name="tech_stack"
+                    multiple
+                    options={techStackOptions}
+                    defaultValue={project.tech_stack}
+                />
 
-                <div>
-                    <label
-                        htmlFor="thumbnail"
-                        className="mb-2 block"
-                    >
-                        Thumbnail
-                    </label>
+                <AdminInput
+                    label="Display Order"
+                    name="display_order"
+                    type="number"
+                    min="0"
+                    defaultValue={project.display_order}
+                />
 
-                    <input
-                        id="thumbnail"
-                        name="thumbnail"
-                        type="file"
-                        accept="image/png,image/jpeg,image/webp"
-                    />
-                </div>
+                <AdminCheckbox
+                    label="Featured Project"
+                    name="is_featured"
+                    defaultChecked={project.is_featured}
+                />
 
-                <div>
-                    <label htmlFor="github_url">
-                        GitHub URL
-                    </label>
+                {project.thumbnail_url && (
+                    <div>
+                        <p className="mb-2 text-sm font-medium">
+                            Current Thumbnail
+                        </p>
 
-                    <input
-                        id="github_url"
-                        name="github_url"
-                        type="url"
-                        defaultValue={project.github_url ?? ""}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                        <img
+                            src={project.thumbnail_url}
+                            alt={project.title}
+                            className="h-32 rounded-lg object-cover"
+                        />
+                    </div>
+                )}
 
-                <div>
-                    <label htmlFor="live_url">
-                        Live URL
-                    </label>
+                <AdminFileInput
+                    label="Replace Thumbnail"
+                    name="thumbnail"
+                    accept="image/jpeg,image/png,image/webp"
+                />
 
-                    <input
-                        id="live_url"
-                        name="live_url"
-                        type="url"
-                        defaultValue={project.live_url ?? ""}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
-
-                <div>
-                    <label htmlFor="tech_stack">
-                        Tech Stack
-                    </label>
-
-                    <select
-                        id="tech_stack"
-                        name="tech_stack"
-                        multiple
-                        defaultValue={project.tech_stack}
-                        className="w-full rounded-lg border p-3"
-                    >
-                        <option value="Next.js">
-                            Next.js
-                        </option>
-
-                        <option value="React">
-                            React
-                        </option>
-
-                        <option value="Flutter">
-                            Flutter
-                        </option>
-
-                        <option value="Laravel">
-                            Laravel
-                        </option>
-
-                        <option value="Supabase">
-                            Supabase
-                        </option>
-
-                        <option value="PostgreSQL">
-                            PostgreSQL
-                        </option>
-                    </select>
-                </div>
-
-                <div>
-                    <label htmlFor="display_order">
-                        Display Order
-                    </label>
-
-                    <input
-                        id="display_order"
-                        name="display_order"
-                        type="number"
-                        min="0"
-                        defaultValue={project.display_order}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
-
-                <label className="flex gap-3">
-                    <input
-                        name="is_featured"
-                        type="checkbox"
-                        defaultChecked={project.is_featured}
-                    />
-
-                    Featured Project
-                </label>
-
-                <button
-                    type="submit"
-                    className="rounded-lg bg-black px-5 py-3 text-white"
-                >
+                <AdminSubmitButton>
                     Save Changes
-                </button>
+                </AdminSubmitButton>
             </form>
         </main>
     );

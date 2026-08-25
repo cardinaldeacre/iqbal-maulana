@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import {
+    AdminFileInput,
+    AdminInput,
+    AdminSubmitButton,
+    AdminTextarea,
+} from "@/app/components/admin";
+
 import { updateAchievement } from "@/lib/actions/achievements";
 import { getAchievementById } from "@/lib/services/achievements";
 
@@ -32,128 +39,71 @@ export default async function EditAchievementPage({
                 href="/admin/achievements"
                 className="text-sm text-neutral-500"
             >
-                ← Back to Achievements
+                ← Back
             </Link>
 
             <h1 className="mt-6 text-3xl font-bold">
-                Edit Project
+                Edit Achievement
             </h1>
 
             <form
                 action={updateAchievementWithId}
                 className="mt-8 space-y-6"
             >
-                <div>
-                    <label htmlFor="title">
-                        Achievement Title
-                    </label>
+                <AdminInput
+                    label="Title"
+                    name="title"
+                    required
+                    defaultValue={achievement.title}
+                />
 
-                    <input
-                        id="title"
-                        name="title"
-                        required
-                        defaultValue={achievement.title}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                <AdminInput
+                    label="Organization"
+                    name="organization"
+                    defaultValue={achievement.organization ?? ""}
+                />
 
-                <div>
-                    <label htmlFor="organization">
-                        Organization
-                    </label>
+                <AdminTextarea
+                    label="Description"
+                    name="description"
+                    rows={5}
+                    defaultValue={achievement.description ?? ""}
+                />
 
-                    <input
-                        id="organization"
-                        name="organization"
-                        required
-                        defaultValue={achievement.organization ?? ""}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                <AdminInput
+                    label="Year"
+                    name="year"
+                    type="number"
+                    min="2000"
+                    max="2100"
+                    required
+                    defaultValue={achievement.year ?? ""}
+                />
 
-                <div>
-                    <label htmlFor="description">
-                        Description
-                    </label>
+                <AdminInput
+                    label="Credential URL"
+                    name="credential_url"
+                    type="url"
+                    defaultValue={achievement.credential_url ?? ""}
+                />
 
-                    <textarea
-                        id="description"
-                        name="description"
-                        rows={6}
-                        required
-                        defaultValue={achievement.description ?? ""}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
+                <AdminInput
+                    label="Display Order"
+                    name="display_order"
+                    type="number"
+                    min="0"
+                    defaultValue={achievement.display_order}
+                />
 
-                <div>
-                    <label
-                        htmlFor="thumbnail"
-                        className="mb-2 block"
-                    >
-                        Thumbnail
-                    </label>
+                <AdminFileInput
+                    label="Replace Image"
+                    name="image"
+                    accept="image/jpeg,image/png,image/webp"
+                />
 
-                    <input
-                        id="thumbnail"
-                        name="thumbnail"
-                        type="file"
-                        accept="image/png,image/jpeg,image/webp"
-                    />
-                </div>
-
-                <div>
-                    <label htmlFor="credential_url">
-                        Credential URL
-                    </label>
-
-                    <input
-                        id="credential_url"
-                        name="credential_url"
-                        type="url"
-                        defaultValue={achievement.credential_url ?? ""}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
-
-                <div>
-                    <label htmlFor="year">
-                        Year
-                    </label>
-
-                    <input
-                        id="year"
-                        name="year"
-                        type="number"
-                        min="2000"
-                        max="2100"
-                        defaultValue={achievement.year ?? ""}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
-
-                <div>
-                    <label htmlFor="display_order">
-                        Display Order
-                    </label>
-
-                    <input
-                        id="display_order"
-                        name="display_order"
-                        type="number"
-                        min="0"
-                        max="100"
-                        defaultValue={achievement.display_order ?? ""}
-                        className="w-full rounded-lg border p-3"
-                    />
-                </div>
-
-                <button
-                    type="submit"
-                    className="rounded-lg bg-black px-5 py-3 text-white"
-                >
+                <AdminSubmitButton>
                     Save Changes
-                </button>
+                </AdminSubmitButton>
             </form>
         </main>
     );

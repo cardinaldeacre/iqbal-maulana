@@ -1,5 +1,12 @@
 import Link from "next/link";
 
+import {
+    AdminFileInput,
+    AdminInput,
+    AdminSubmitButton,
+    AdminTextarea,
+} from "@/app/components/admin";
+
 import { createAchievement } from "@/lib/actions/achievements";
 
 export default function NewAchievementPage() {
@@ -20,62 +27,55 @@ export default function NewAchievementPage() {
                 action={createAchievement}
                 className="mt-8 space-y-6"
             >
-                <input
+                <AdminInput
+                    label="Title"
                     name="title"
                     required
-                    placeholder="Achievement title"
-                    className="w-full rounded-lg border p-3"
                 />
 
-                <input
+                <AdminInput
+                    label="Organization"
                     name="organization"
-                    placeholder="Organization"
-                    className="w-full rounded-lg border p-3"
                 />
 
-                <textarea
+                <AdminTextarea
+                    label="Description"
                     name="description"
                     rows={5}
-                    placeholder="Description"
-                    className="w-full rounded-lg border p-3"
                 />
 
-                <input
+                <AdminInput
+                    label="Year"
                     name="year"
                     type="number"
                     min="2000"
                     max="2100"
                     required
-                    className="w-full rounded-lg border p-3"
                 />
 
-                <input
+                <AdminInput
+                    label="Credential URL"
                     name="credential_url"
                     type="url"
-                    placeholder="Credential URL"
-                    className="w-full rounded-lg border p-3"
                 />
 
-                <input
+                <AdminInput
+                    label="Display Order"
                     name="display_order"
                     type="number"
                     min="0"
                     defaultValue="0"
-                    className="w-full rounded-lg border p-3"
                 />
 
-                <input
+                <AdminFileInput
+                    label="Achievement Image"
                     name="image"
-                    type="file"
                     accept="image/jpeg,image/png,image/webp"
                 />
 
-                <button
-                    type="submit"
-                    className="rounded-lg bg-black px-5 py-3 text-white"
-                >
+                <AdminSubmitButton>
                     Create Achievement
-                </button>
+                </AdminSubmitButton>
             </form>
         </main>
     );
