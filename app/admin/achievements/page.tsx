@@ -14,7 +14,17 @@ export default async function AchievementsPage() {
 				title="Achievements"
 				description="Manage awards, certifications, and achievements."
 				action={
-					<Link href="/admin/achievements/new" className="rounded-lg bg-black px-4 py-2 text-white">
+					<Link
+						href="/admin/achievements/new"
+						className="
+                            rounded-xl
+                            bg-gold
+                            px-4 py-2
+                            text-sm font-medium
+                            text-charcoal
+                            transition
+                            hover:bg-gold-light
+                            ">
 						+ Add Achievement
 					</Link>
 				}

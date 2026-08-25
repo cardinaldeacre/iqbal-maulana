@@ -28,7 +28,7 @@ export function AdminInput({
 				name={name}
 				className={[
 					'w-full rounded-xl border border-border',
-					'bg-surface px-4 py-3 text-graphite',
+					'bg-sand-light px-4 py-3 text-graphite',
 					'placeholder:text-muted',
 					'outline-none transition',
 					'focus:border-accent focus:ring-2 focus:ring-accent/15',

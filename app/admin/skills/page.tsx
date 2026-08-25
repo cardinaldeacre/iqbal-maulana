@@ -14,7 +14,17 @@ export default async function SkillsPage() {
 				title="Skills"
 				description="Manage technologies displayed in your portfolio."
 				action={
-					<Link href="/admin/skills/new" className="rounded-lg bg-black px-4 py-2 text-white">
+					<Link
+						href="/admin/skills/new"
+						className="
+                            rounded-xl
+                            bg-gold
+                            px-4 py-2
+                            text-sm font-medium
+                            text-charcoal
+                            transition
+                            hover:bg-gold-light
+                            ">
 						+ Add Skill
 					</Link>
 				}

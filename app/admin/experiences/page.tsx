@@ -14,7 +14,17 @@ export default async function ExperiencesPage() {
 				title="Experiences"
 				description="Manage work and organizational experiences."
 				action={
-					<Link href="/admin/experiences/new" className="rounded-lg bg-black px-4 py-2 text-white">
+					<Link
+						href="/admin/experiences/new"
+						className="
+                            rounded-xl
+                            bg-gold
+                            px-4 py-2
+                            text-sm font-medium
+                            text-charcoal
+                            transition
+                            hover:bg-gold-light
+                            ">
 						+ Add Experience
 					</Link>
 				}

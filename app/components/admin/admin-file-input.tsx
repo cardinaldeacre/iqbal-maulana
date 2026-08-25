@@ -18,11 +18,11 @@ export function AdminFileInput({label, hint, name, className = '', ...props}: Ad
 				type="file"
 				className={[
 					'block w-full rounded-xl border border-border',
-					'bg-surface p-3 text-sm text-graphite',
+					'bg-sand-light p-3 text-sm text-graphite',
 					'file:mr-4 file:rounded-lg file:border-0',
 					'file:bg-gold file:px-4 file:py-2',
 					'file:text-sm file:font-medium file:text-foreground',
-					'hover:file:bg-sand',
+					'hover:file:bg-gold-light',
 					className,
 				].join(' ')}
 				{...props}
