@@ -6,22 +6,25 @@ type AdminTextareaProps =
     TextareaHTMLAttributes<HTMLTextAreaElement> & {
         label: string;
         error?: string;
+        hint?: string;
     };
 
 export function AdminTextarea({
     label,
     error,
+    hint,
     id,
     name,
+    className = "",
     ...props
 }: AdminTextareaProps) {
     const textareaId = id ?? name;
 
     return (
-        <div>
+        <div className="space-y-2">
             <label
                 htmlFor={textareaId}
-                className="mb-2 block text-sm font-medium"
+                className="block text-sm font-medium text-foreground"
             >
                 {label}
             </label>
@@ -29,12 +32,26 @@ export function AdminTextarea({
             <textarea
                 id={textareaId}
                 name={name}
-                className="w-full rounded-lg border p-3"
+                className={[
+                    "w-full resize-y rounded-xl border border-border",
+                    "bg-surface px-4 py-3 text-foreground",
+                    "placeholder:text-muted",
+                    "outline-none transition",
+                    "focus:border-accent focus:ring-2 focus:ring-accent/15",
+                    error ? "border-red-500" : "",
+                    className,
+                ].join(" ")}
                 {...props}
             />
 
+            {hint && !error && (
+                <p className="text-xs text-muted">
+                    {hint}
+                </p>
+            )}
+
             {error && (
-                <p className="mt-1 text-sm text-red-600">
+                <p className="text-xs text-red-600">
                     {error}
                 </p>
             )}

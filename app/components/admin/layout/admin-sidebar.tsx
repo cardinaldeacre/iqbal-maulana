@@ -1,69 +1,60 @@
-import { AdminNavLink } from "./admin-nav-link";
+import {AdminNavLink} from './admin-nav-link';
 
 const adminNavigation = [
-    {
-        href: "/admin",
-        label: "Dashboard",
-    },
-    {
-        href: "/admin/projects",
-        label: "Projects",
-    },
-    {
-        href: "/admin/experiences",
-        label: "Experiences",
-    },
-    {
-        href: "/admin/skills",
-        label: "Skills",
-    },
-    {
-        href: "/admin/achievements",
-        label: "Achievements",
-    },
-    {
-        href: "/admin/settings",
-        label: "Settings",
-    },
+	{href: '/admin', label: 'Dashboard'},
+	{href: '/admin/projects', label: 'Projects'},
+	{href: '/admin/experiences', label: 'Experiences'},
+	{href: '/admin/skills', label: 'Skills'},
+	{href: '/admin/achievements', label: 'Achievements'},
+	{href: '/admin/settings', label: 'Settings'},
 ];
 
 export function AdminSidebar() {
-    return (
-        <aside className="w-64 shrink-0 border-r bg-white p-5">
-            <div className="mb-8">
-                <p className="text-lg font-bold text-gray-900">
-                    Portfolio Admin
-                </p>
+	return (
+		<aside
+			className="
+                flex min-h-screen w-64 shrink-0 flex-col
+                border-r border-gold/20
+                bg-charcoal p-5
+                shadow-[1px_0_0_rgba(179,145,82,0.08)]
+                ">
+			<div>
+				<div className="mb-8">
+					<p className="text-lg font-bold text-white">Portfolio Admin</p>
 
-                <p className="mt-1 text-xs text-neutral-500">
-                    Content management
-                </p>
-            </div>
+					<p className="mt-1 text-xs text-white/45">Content management</p>
+				</div>
 
-            <nav className="space-y-1">
-                {adminNavigation.map((item) => (
-                    <AdminNavLink
-                        key={item.href}
-                        {...item}
-                    />
-                ))}
-            </nav>
+				<nav className="space-y-1">
+					{adminNavigation.map((item) => (
+						<AdminNavLink key={item.href} {...item} />
+					))}
+				</nav>
+			</div>
 
-            <div className="mt-10 border-t pt-5">
-                <a
-                    href="/"
-                    className="block rounded-lg px-3 py-2 text-sm text-neutral-600 hover:bg-neutral-100"
-                >
-                    View Portfolio
-                </a>
+			<div className="mt-auto border-t border-white/10 pt-5">
+				<a
+					href="/"
+					className="
+            block rounded-xl px-3 py-2
+            text-sm font-medium text-white/60
+            transition
+            hover:bg-white/5 hover:text-white
+          ">
+					View Portfolio
+				</a>
 
-                <a
-                    href="/auth/logout"
-                    className="mt-1 block rounded-lg px-3 py-2 text-sm text-red-600 hover:bg-red-50"
-                >
-                    Logout
-                </a>
-            </div>
-        </aside>
-    );
+				<a
+					href="/auth/logout"
+					className="
+            mt-1 block rounded-xl px-3 py-2
+            text-sm font-medium text-red-400
+            transition
+            hover:bg-red-500/10 hover:text-red-300
+          ">
+					Logout
+				</a>
+			</div>
+		</aside>
+	);
 }

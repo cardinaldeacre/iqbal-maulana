@@ -16,17 +16,18 @@ export function AdminNavLink({
 
     const active =
         href === "/admin"
-            ? pathname === href
-            : pathname.startsWith(`${href}/`);
+            ? pathname === "/admin"
+            : pathname === href ||
+            pathname.startsWith(`${href}/`);
 
     return (
         <Link
             href={href}
             className={[
-                "block rounded-lg px-3 py-2 text-sm transition",
+                "block rounded-xl px-3 py-2 text-sm font-medium transition",
                 active
-                    ? "bg-black text-white"
-                    : "text-neutral-600 hover:bg-neutral-100",
+                    ? "bg-gold text-charcoal shadow-sm"
+                    : "text-white/60 hover:bg-white/5 hover:text-white",
             ].join(" ")}
         >
             {label}

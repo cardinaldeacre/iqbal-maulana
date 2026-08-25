@@ -1,21 +1,21 @@
-import type { ReactNode } from "react";
+import type {ReactNode} from 'react';
 
-import { AdminSidebar } from "./admin-sidebar";
+import {AdminSidebar} from './admin-sidebar';
 
 type AdminShellProps = {
-    children: ReactNode;
+	children: ReactNode;
 };
 
-export function AdminShell({
-    children,
-}: AdminShellProps) {
-    return (
-        <div className="flex min-h-screen bg-neutral-50">
-            <AdminSidebar />
+export function AdminShell({children}: AdminShellProps) {
+	return (
+		<div className="min-h-screen bg-charcoal text-white">
+			<div className="flex min-h-screen">
+				<div className="hidden lg:block">
+					<AdminSidebar />
+				</div>
 
-            <div className="min-w-0 flex-1">
-                {children}
-            </div>
-        </div>
-    );
+				<div className="min-w-0 flex-1">{children}</div>
+			</div>
+		</div>
+	);
 }

@@ -8,12 +8,14 @@ export function DashboardSummaryCard({
     value,
 }: DashboardSummaryCardProps) {
     return (
-        <div className="rounded-xl border bg-white p-5">
-            <p className="text-sm text-neutral-500">
+        <div className="rounded-2xl border border-gold/20 bg-sand-light p-5 text-charcoal shadow-sm">
+            <div className="mb-4 h-1 w-8 rounded-full bg-gold" />
+
+            <p className="text-sm font-medium text-stone">
                 {label}
             </p>
 
-            <p className="mt-2 text-3xl font-bold">
+            <p className="mt-2 text-3xl font-bold text-charcoal">
                 {value}
             </p>
         </div>

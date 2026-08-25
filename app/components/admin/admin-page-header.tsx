@@ -10,20 +10,26 @@ export function AdminPageHeader({
     action,
 }: AdminPageHeaderProps) {
     return (
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-                <h1 className="text-3xl font-bold text-gray-900">
+                <div className="mb-3 h-1 w-10 rounded-full bg-gold" />
+
+                <h1 className="text-3xl font-bold tracking-tight text-white">
                     {title}
                 </h1>
 
                 {description && (
-                    <p className="mt-1 text-neutral-500">
+                    <p className="mt-2 max-w-2xl text-sm text-white/50">
                         {description}
                     </p>
                 )}
             </div>
 
-            {action}
+            {action && (
+                <div className="shrink-0">
+                    {action}
+                </div>
+            )}
         </div>
     );
 }

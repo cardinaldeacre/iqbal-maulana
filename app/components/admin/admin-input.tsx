@@ -4,22 +4,25 @@ type AdminInputProps =
     InputHTMLAttributes<HTMLInputElement> & {
         label: string;
         error?: string;
+        hint?: string;
     };
 
 export function AdminInput({
     label,
     error,
+    hint,
     id,
     name,
+    className = "",
     ...props
 }: AdminInputProps) {
     const inputId = id ?? name;
 
     return (
-        <div>
+        <div className="space-y-2">
             <label
                 htmlFor={inputId}
-                className="mb-2 block text-sm font-medium"
+                className="block text-sm font-medium text-foreground"
             >
                 {label}
             </label>
@@ -27,12 +30,27 @@ export function AdminInput({
             <input
                 id={inputId}
                 name={name}
-                className="w-full rounded-lg border p-3"
+                className={[
+                    "w-full rounded-xl border border-border",
+                    "bg-surface px-4 py-3 text-foreground",
+                    "placeholder:text-muted",
+                    "outline-none transition",
+                    "focus:border-accent focus:ring-2 focus:ring-accent/15",
+                    "disabled:cursor-not-allowed disabled:opacity-50",
+                    error ? "border-red-500" : "",
+                    className,
+                ].join(" ")}
                 {...props}
             />
 
+            {hint && !error && (
+                <p className="text-xs text-muted">
+                    {hint}
+                </p>
+            )}
+
             {error && (
-                <p className="mt-1 text-sm text-red-600">
+                <p className="text-xs text-red-600">
                     {error}
                 </p>
             )}

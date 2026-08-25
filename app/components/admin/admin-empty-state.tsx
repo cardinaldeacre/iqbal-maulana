@@ -4,8 +4,12 @@ export function AdminEmptyState({
     message: string;
 }) {
     return (
-        <div className="rounded-xl border p-8 text-center text-neutral-500">
-            {message}
+        <div className="rounded-2xl border border-dashed border-border bg-surface-soft/60 p-10 text-center">
+            <div className="mx-auto mb-3 h-2 w-2 rounded-full bg-accent" />
+
+            <p className="text-sm text-muted">
+                {message}
+            </p>
         </div>
     );
 }

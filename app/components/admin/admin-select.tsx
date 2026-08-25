@@ -11,22 +11,25 @@ type AdminSelectProps =
     SelectHTMLAttributes<HTMLSelectElement> & {
         label: string;
         options: Option[];
+        hint?: string;
     };
 
 export function AdminSelect({
     label,
     options,
+    hint,
     id,
     name,
+    className = "",
     ...props
 }: AdminSelectProps) {
     const selectId = id ?? name;
 
     return (
-        <div>
+        <div className="space-y-2">
             <label
                 htmlFor={selectId}
-                className="mb-2 block text-sm font-medium"
+                className="block text-sm font-medium text-foreground"
             >
                 {label}
             </label>
@@ -34,7 +37,13 @@ export function AdminSelect({
             <select
                 id={selectId}
                 name={name}
-                className="w-full rounded-lg border p-3"
+                className={[
+                    "w-full rounded-xl border border-border",
+                    "bg-surface px-4 py-3 text-foreground",
+                    "outline-none transition",
+                    "focus:border-accent focus:ring-2 focus:ring-accent/15",
+                    className,
+                ].join(" ")}
                 {...props}
             >
                 {options.map((option) => (
@@ -46,6 +55,12 @@ export function AdminSelect({
                     </option>
                 ))}
             </select>
+
+            {hint && (
+                <p className="text-xs text-muted">
+                    {hint}
+                </p>
+            )}
         </div>
     );
 }
