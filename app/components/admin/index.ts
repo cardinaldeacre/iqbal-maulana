@@ -7,3 +7,4 @@ export * from "./admin-file-input";
 export * from "./admin-empty-state";
 export * from "./admin-delete-button";
 export * from "./admin-submit-button";
+export * from "./dashboard-summary-card";
