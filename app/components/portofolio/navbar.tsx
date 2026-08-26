@@ -1,22 +1,40 @@
+'use client';
+
 import Link from 'next/link';
+import {useEffect, useState} from 'react';
+
+import {cn} from '@/lib/utils';
 
 const navigation = [
 	{label: 'About', href: '#about'},
 	{label: 'Projects', href: '#projects'},
 	{label: 'Experience', href: '#experience'},
 	{label: 'Achievements', href: '#achievements'},
-	{label: 'Contact', href: '#contact'},
 ];
 
-type NavbarProps = {
-	name?: string | null;
-};
+export function Navbar({name}: {name?: string | null}) {
+	const [scrolled, setScrolled] = useState(false);
 
-export function Navbar({name}: NavbarProps) {
+	useEffect(() => {
+		const handleScroll = () => {
+			setScrolled(window.scrollY > 40);
+		};
+
+		handleScroll();
+
+		window.addEventListener('scroll', handleScroll, {passive: true});
+
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
+
 	return (
-		<header className="absolute inset-x-0 top-0 z-50">
-			<div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
-				<Link href="/" className="text-lg font-bold tracking-tight text-white">
+		<header
+			className={cn(
+				'fixed inset-x-0 top-0 z-50 transition-all duration-300',
+				scrolled ? 'border-b border-white/10 bg-charcoal/75 backdrop-blur-xl' : 'bg-transparent'
+			)}>
+			<div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
+				<Link href="/" className="font-bold tracking-tight text-white">
 					{name ?? 'Portfolio'}
 					<span className="text-gold">.</span>
 				</Link>
@@ -26,7 +44,12 @@ export function Navbar({name}: NavbarProps) {
 						<Link
 							key={item.href}
 							href={item.href}
-							className="text-sm font-medium text-white/60 transition hover:text-gold-light">
+							className="
+								text-sm font-medium
+								text-white/50
+								transition
+								hover:text-white
+							">
 							{item.label}
 						</Link>
 					))}
@@ -35,15 +58,15 @@ export function Navbar({name}: NavbarProps) {
 				<Link
 					href="#contact"
 					className="
-            rounded-full
-            border border-gold/40
-            px-4 py-2
-            text-sm font-medium
-            text-gold-light
-            transition
-            hover:bg-gold
-            hover:text-charcoal
-          ">
+						rounded-full
+						border border-gold/30
+						px-4 py-2
+						text-sm font-medium
+						text-gold-light
+						transition
+						hover:bg-gold
+						hover:text-charcoal
+					">
 					Let&apos;s Talk
 				</Link>
 			</div>

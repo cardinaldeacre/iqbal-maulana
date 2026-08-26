@@ -1,8 +1,11 @@
-import {About, Hero, Navbar, TechStack} from '@/app/components/portofolio';
-import {getPortfolio} from '@/lib/services/portofolio';
+import {About, FeaturedProjects, Hero, Navbar, TechStack} from '@/app/components/portofolio';
+
+import {getPublicPortfolioData} from '@/lib/services/portofolio';
+import {ExperienceTimeline} from './components/portofolio/experience-timeline';
 
 export default async function HomePage() {
-	const {profile, featuredProjects, experiences, skills, achievements} = await getPortfolio();
+	const {profile, featuredProjects, experiences, skills, achievements} =
+		await getPublicPortfolioData();
 
 	return (
 		<main>
@@ -14,7 +17,9 @@ export default async function HomePage() {
 
 			<TechStack skills={skills} />
 
-			<section id="projects" className="min-h-screen bg-graphite" />
+			<FeaturedProjects projects={featuredProjects} />
+
+			<ExperienceTimeline experiences={experiences} />
 
 			<section id="experience" className="min-h-screen bg-ivory" />
 

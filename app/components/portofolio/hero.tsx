@@ -1,4 +1,10 @@
+'use client';
+
 import Link from 'next/link';
+import {motion} from 'motion/react';
+import {ArrowDownRight, ArrowUpRight} from 'lucide-react';
+
+import {Button} from '@/components/ui/button';
 
 type HeroProps = {
 	name?: string | null;
@@ -9,89 +15,129 @@ type HeroProps = {
 export function Hero({name, headline, bio}: HeroProps) {
 	return (
 		<section className="relative flex min-h-screen items-center overflow-hidden bg-charcoal">
+			{/* Grid */}
 			<div
 				className="
-          pointer-events-none
-          absolute -right-40 top-20
-          h-96 w-96
-          rounded-full
-          bg-gold/10
-          blur-3xl
+          pointer-events-none absolute inset-0
+          bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)]
+          bg-[size:48px_48px]
+          [mask-image:linear-gradient(to_bottom,black,transparent)]
         "
 			/>
 
-			<div
+			<motion.div
 				className="
-          pointer-events-none
-          absolute -left-32 bottom-0
-          h-72 w-72
-          rounded-full
-          bg-sand/5
-          blur-3xl
-        "
+					pointer-events-none
+					absolute right-[8%] top-[18%]
+					h-80 w-80
+					rounded-full
+					bg-gold/15
+					blur-3xl
+					"
+				animate={{
+					x: [0, 30, -10, 0],
+					y: [0, -20, 25, 0],
+					scale: [1, 1.08, 0.96, 1],
+				}}
+				transition={{
+					duration: 14,
+					repeat: Infinity,
+					ease: 'easeInOut',
+				}}
 			/>
 
 			<div className="relative mx-auto w-full max-w-7xl px-6 pb-20 pt-36 lg:px-8">
-				<div className="max-w-4xl">
-					<div className="mb-6 flex items-center gap-3">
+				<div className="max-w-5xl">
+					<motion.div
+						initial={{opacity: 0, y: 18}}
+						animate={{opacity: 1, y: 0}}
+						transition={{duration: 0.55}}
+						className="mb-6 flex items-center gap-3">
 						<span className="h-px w-10 bg-gold" />
 
-						<p className="text-sm font-medium uppercase tracking-[0.25em] text-gold-light">
+						<p className="text-sm font-medium uppercase tracking-[0.28em] text-gold-light">
 							Full-Stack Developer
 						</p>
-					</div>
+					</motion.div>
 
-					<h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
-						Hi, I&apos;m <span className="text-gold-light">{name ?? 'Developer'}</span>.
-					</h1>
+					<motion.h1
+						initial={{opacity: 0, y: 36}}
+						animate={{opacity: 1, y: 0}}
+						transition={{
+							duration: 0.7,
+							delay: 0.1,
+							ease: [0.22, 1, 0.36, 1],
+						}}
+						className="
+							max-w-5xl
+							text-5xl font-bold
+							leading-[0.98]
+							tracking-[-0.04em]
+							text-white
+							sm:text-6xl
+							lg:text-8xl
+							">
+						I build digital
+						<span className="block text-gold-light">products that matter.</span>
+					</motion.h1>
 
-					<h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-white/90 sm:text-4xl">
-						{headline ?? 'I build thoughtful digital experiences that solve real problems.'}
-					</h2>
+					<motion.div
+						initial={{opacity: 0, y: 24}}
+						animate={{opacity: 1, y: 0}}
+						transition={{
+							duration: 0.65,
+							delay: 0.22,
+						}}
+						className="mt-8 max-w-2xl">
+						<p className="text-lg leading-8 text-white/55">
+							Hi, I&apos;m <span className="font-medium text-white">{name ?? 'Developer'}</span>.{' '}
+							{headline ?? 'I design and build thoughtful web and mobile experiences.'}
+						</p>
 
-					{bio && (
-						<p className="mt-6 max-w-2xl text-base leading-7 text-white/50 sm:text-lg">{bio}</p>
-					)}
+						{bio && <p className="mt-3 text-sm leading-7 text-white/35">{bio}</p>}
+					</motion.div>
 
-					<div className="mt-10 flex flex-wrap gap-4">
-						<Link
-							href="#projects"
+					<motion.div
+						initial={{opacity: 0, y: 20}}
+						animate={{opacity: 1, y: 0}}
+						transition={{
+							duration: 0.6,
+							delay: 0.35,
+						}}
+						className="mt-10 flex flex-wrap gap-4">
+						<Button
+							size="lg"
 							className="
-                rounded-xl
-                bg-gold
-                px-6 py-3
-                text-sm font-semibold
-                text-charcoal
-                transition
-                hover:bg-gold-light
-              ">
-							View Projects
-						</Link>
+								rounded-xl
+								bg-gold
+								text-charcoal
+								hover:bg-gold-light
+							">
+							<Link href="#projects">
+								View Projects
+								<ArrowDownRight className="ml-2 size-4" />
+							</Link>
+						</Button>
 
-						<Link
-							href="#contact"
+						<Button
+							size="lg"
+							variant="outline"
 							className="
-                rounded-xl
-                border border-white/15
-                px-6 py-3
-                text-sm font-semibold
-                text-white
-                transition
-                hover:border-gold/40
-                hover:bg-white/5
-              ">
-							Contact Me
-						</Link>
-					</div>
+								rounded-xl
+								border-white/15
+								bg-transparent
+								text-white
+								hover:border-gold/40
+								hover:bg-white/5
+								hover:text-white
+							">
+							<Link href="#contact">
+								Let&apos;s Talk
+								<ArrowUpRight className="ml-2 size-4" />
+							</Link>
+						</Button>
+					</motion.div>
 				</div>
-			</div>
-
-			<div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block">
-				<Link
-					href="#about"
-					className="text-xs uppercase tracking-[0.25em] text-white/30 transition hover:text-gold">
-					Scroll to explore ↓
-				</Link>
 			</div>
 		</section>
 	);
