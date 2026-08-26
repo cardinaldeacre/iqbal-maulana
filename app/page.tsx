@@ -1,4 +1,12 @@
-import {About, FeaturedProjects, Hero, Navbar, TechStack} from '@/app/components/portofolio';
+import {
+	About,
+	Contact,
+	FeaturedProjects,
+	Hero,
+	Navbar,
+	TechStack,
+	Footer,
+} from '@/app/components/portofolio';
 
 import {getPublicPortfolioData} from '@/lib/services/portofolio';
 import {ExperienceTimeline} from './components/portofolio/experience-timeline';
@@ -21,11 +29,17 @@ export default async function HomePage() {
 
 			<ExperienceTimeline experiences={experiences} />
 
-			<section id="experience" className="min-h-screen bg-ivory" />
+			<Contact
+				email={profile?.email}
+				githubUrl={profile?.github_url}
+				linkedinUrl={profile?.linkedin_url}
+			/>
 
-			<section id="achievements" className="min-h-screen bg-sand-light" />
-
-			<section id="contact" className="min-h-screen bg-charcoal" />
+			<Footer
+				name={profile?.name}
+				githubUrl={profile?.github_url}
+				linkedinUrl={profile?.linkedin_url}
+			/>
 		</main>
 	);
 }
