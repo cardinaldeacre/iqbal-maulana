@@ -47,7 +47,7 @@ export function Hero({name, headline}: HeroProps) {
 				className="
                     pointer-events-none
                     absolute inset-0
-                    bg-gradient-to-b
+                    bg-linear-to-b
                     from-charcoal/10
                     via-charcoal/35
                     to-charcoal
@@ -74,7 +74,6 @@ export function Hero({name, headline}: HeroProps) {
                     mx-auto flex
                     w-full max-w-6xl
                     flex-col items-center
-                    pt-28
                     text-center
                 ">
 				{/* Identity badge */}
@@ -83,21 +82,23 @@ export function Hero({name, headline}: HeroProps) {
                         mb-8 flex items-center gap-3
                         rounded-full
                         border border-white/10
-                        bg-white/[0.03]
+                        bg-white/3
                         px-5 py-2.5
                         backdrop-blur-md
                     ">
 					<span className="size-2 rounded-full bg-gold" />
 
-					<span
+					<ShinyText
+						text="IQBAL MAULANA"
+						disabled={false}
+						speed={2}
 						className="
                             text-xs font-semibold
                             tracking-[0.08em]
-                            text-white
+                            text-gold-light
                             sm:text-sm
-                        ">
-						{name ?? 'IQBAL MAULANA'}
-					</span>
+                        "
+					/>
 
 					<span className="h-4 w-px bg-white/15" />
 
@@ -118,15 +119,15 @@ export function Hero({name, headline}: HeroProps) {
 				<SplitText
 					text="I BUILD DIGITAL PRODUCTS THAT MATTER."
 					className="
-                        max-w-5xl
+                        max-w-4xl
                         text-5xl font-bold
                         uppercase
                         leading-[0.98]
                         tracking-[-0.045em]
                         text-white
-                        sm:text-6xl
-                        lg:text-7xl
-                        xl:text-8xl
+                        sm:text-4xl
+                        lg:text-5xl
+                        xl:text-6xl
                     "
 					delay={20}
 					duration={1}
