@@ -4,7 +4,8 @@ import Link from 'next/link';
 import {motion} from 'motion/react';
 import {ArrowDownRight, ArrowUpRight} from 'lucide-react';
 
-import {Button} from '@/components/ui/button';
+import {Button, buttonVariants} from '@/components/ui/button';
+import {cn} from '@/lib/utils';
 
 type HeroProps = {
 	name?: string | null;
@@ -15,14 +16,13 @@ type HeroProps = {
 export function Hero({name, headline, bio}: HeroProps) {
 	return (
 		<section className="relative flex min-h-screen items-center overflow-hidden bg-charcoal">
-			{/* Grid */}
 			<div
 				className="
-          pointer-events-none absolute inset-0
-          bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)]
-          bg-[size:48px_48px]
-          [mask-image:linear-gradient(to_bottom,black,transparent)]
-        "
+				pointer-events-none absolute inset-0
+				bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)]
+				bg-size[48px_48px]
+				mask-[linear-gradient(to_bottom,black,transparent)]
+				"
 			/>
 
 			<motion.div
@@ -105,37 +105,30 @@ export function Hero({name, headline, bio}: HeroProps) {
 							delay: 0.35,
 						}}
 						className="mt-10 flex flex-wrap gap-4">
-						<Button
-							size="lg"
-							className="
-								rounded-xl
-								bg-gold
-								text-charcoal
-								hover:bg-gold-light
-							">
-							<Link href="#projects">
-								View Projects
-								<ArrowDownRight className="ml-2 size-4" />
-							</Link>
-						</Button>
-
-						<Button
-							size="lg"
-							variant="outline"
-							className="
-								rounded-xl
-								border-white/15
-								bg-transparent
-								text-white
-								hover:border-gold/40
-								hover:bg-white/5
-								hover:text-white
-							">
-							<Link href="#contact">
-								Let&apos;s Talk
-								<ArrowUpRight className="ml-2 size-4" />
-							</Link>
-						</Button>
+						<Link
+							href="#contact"
+							className={cn(
+								buttonVariants({
+									variant: 'outline',
+									size: 'lg',
+								}),
+								'gap-2.5'
+							)}>
+							Let&apos;s Talk
+							<ArrowUpRight className="ml-2 size-4" />
+						</Link>
+						<Link
+							href="#projects"
+							className={cn(
+								buttonVariants({
+									variant: 'default',
+									size: 'lg',
+								}),
+								'gap-2.5'
+							)}>
+							View Projects
+							<ArrowDownRight className="ml-2 size-4" />
+						</Link>
 					</motion.div>
 				</div>
 			</div>
