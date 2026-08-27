@@ -18,6 +18,18 @@ type ExperienceTimelineProps = {
 };
 
 export function ExperienceTimeline({experiences}: ExperienceTimelineProps) {
+	function formateMonthYear(dateString: string | null) {
+		if (!dateString) return null;
+
+		const date = new Date(dateString);
+		const options: Intl.DateTimeFormatOptions = {
+			year: 'numeric',
+			month: 'short',
+		};
+
+		return date.toLocaleDateString('en-US', options);
+	}
+
 	return (
 		<section
 			id="experience"
@@ -116,9 +128,11 @@ export function ExperienceTimeline({experiences}: ExperienceTimelineProps) {
 													</div>
 
 													<span className="text-xs text-stone">
-														{experience.start_date}
+														{formateMonthYear(experience.start_date)}
 														{' — '}
-														{experience.is_current ? 'Present' : experience.end_date}
+														{experience.is_current
+															? 'Present'
+															: formateMonthYear(experience.end_date)}
 													</span>
 												</div>
 
