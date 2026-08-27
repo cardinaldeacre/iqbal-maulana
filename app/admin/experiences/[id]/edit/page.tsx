@@ -1,16 +1,11 @@
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
 
-import {
-	AdminCheckbox,
-	AdminInput,
-	AdminSelect,
-	AdminSubmitButton,
-	AdminTextarea,
-} from '@/components/admin';
+import {AdminCheckbox, AdminInput, AdminSelect, AdminSubmitButton} from '@/components/admin';
 import {techStackOptions} from '@/app/constants/admin-options';
 import {updateExperience} from '@/lib/actions/experiences';
 import {getExperienceById} from '@/lib/services/experiences';
+import {RichTextEditor} from '@/components/admin/rich-text-editor';
 
 interface EditExperiencePageProps {
 	params: Promise<{
@@ -49,10 +44,9 @@ export default async function EditExperiencePage({params}: EditExperiencePagePro
 
 				<AdminInput label="Position" name="position" required defaultValue={experience.position} />
 
-				<AdminTextarea
+				<RichTextEditor
 					label="Description"
 					name="description"
-					rows={5}
 					defaultValue={experience.description ?? ''}
 				/>
 

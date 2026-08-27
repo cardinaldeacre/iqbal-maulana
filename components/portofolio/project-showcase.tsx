@@ -4,9 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {motion} from 'motion/react';
 import {ArrowUpRight} from 'lucide-react';
-
 import {Badge} from '@/components/ui/badge';
-import {Button} from '@/components/ui/button';
 
 type Project = {
 	id: string;
@@ -187,14 +185,33 @@ export function ProjectShowcase({project, index}: ProjectShowcaseProps) {
 					{project.title}
 				</h3>
 
-				<p
+				<div
 					className="
-                        mt-5 max-w-xl
-                        text-base leading-8
-                        text-white/50
-                    ">
-					{project.description}
-				</p>
+						prose prose-invert
+						mt-5 max-w-xl
+
+						prose-p:text-white/50
+						prose-p:leading-8
+
+						prose-headings:text-white
+						prose-strong:text-white
+
+						prose-a:text-gold-light
+						prose-a:no-underline
+						hover:prose-a:underline
+
+						prose-blockquote:border-gold
+						prose-blockquote:text-white/60
+
+						prose-li:text-white/50
+						prose-li:marker:text-gold
+
+						prose-code:text-gold-light
+					"
+					dangerouslySetInnerHTML={{
+						__html: project.description,
+					}}
+				/>
 
 				{project.tech_stack.length > 0 && (
 					<div className="mt-7 flex flex-wrap gap-2">

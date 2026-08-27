@@ -1,14 +1,10 @@
 import Link from 'next/link';
 
-import {
-	AdminCheckbox,
-	AdminInput,
-	AdminSelect,
-	AdminSubmitButton,
-	AdminTextarea,
-} from '@/components/admin';
+import {AdminCheckbox, AdminInput, AdminSubmitButton} from '@/components/admin';
 import {techStackOptions} from '@/app/constants/admin-options';
 import {createExperience} from '@/lib/actions/experiences';
+import {RichTextEditor} from '@/components/admin/rich-text-editor';
+import {AdminMultiSelect} from '@/components/admin/admin-multi-select';
 
 export default function NewExperiencePage() {
 	return (
@@ -24,7 +20,7 @@ export default function NewExperiencePage() {
 
 				<AdminInput label="Position" name="position" required />
 
-				<AdminTextarea label="Description" name="description" rows={5} />
+				<RichTextEditor label="Description" name="description" />
 
 				<div className="grid grid-cols-2 gap-4">
 					<AdminInput label="Start Date" name="start_date" type="date" required />
@@ -33,8 +29,6 @@ export default function NewExperiencePage() {
 				</div>
 
 				<AdminCheckbox label="Current position" name="is_current" />
-
-				<AdminSelect label="Tech Stack" name="tech_stack" options={techStackOptions} multiple />
 
 				<AdminInput
 					label="Display Order"

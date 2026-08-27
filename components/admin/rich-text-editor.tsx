@@ -115,6 +115,7 @@ export function RichTextEditor({
 		<div className="space-y-2">
 			<label className="text-sm font-medium text-surface">{label}</label>
 
+			<div />
 			<input type="hidden" name={name} value={content} readOnly />
 
 			<div
