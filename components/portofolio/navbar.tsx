@@ -1,7 +1,7 @@
 'use client';
 
 import {useEffect, useState} from 'react';
-
+import {smoothScroll} from '@/hooks/smooth-scroll';
 import {cn} from '@/lib/utils';
 
 const navigation = [
@@ -13,6 +13,7 @@ const navigation = [
 
 export function Navbar({name}: {name?: string | null}) {
 	const [scrolled, setScrolled] = useState(false);
+	const {scrollToSection} = smoothScroll();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -33,7 +34,10 @@ export function Navbar({name}: {name?: string | null}) {
 				scrolled ? 'border-b border-white/10 bg-charcoal/75 backdrop-blur-xl' : 'bg-transparent'
 			)}>
 			<div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-				<a href="/" className="font-bold tracking-tight text-white">
+				<a
+					href="/"
+					onClick={(event) => scrollToSection(event, '#home')}
+					className="font-bold tracking-tight text-white">
 					{name ?? 'Portfolio'}
 					<span className="text-gold">.</span>
 				</a>
@@ -43,6 +47,7 @@ export function Navbar({name}: {name?: string | null}) {
 						<a
 							key={item.href}
 							href={item.href}
+							onClick={(event) => scrollToSection(event, item.href)}
 							className="
 								text-sm font-medium
 								text-white/50

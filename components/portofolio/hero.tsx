@@ -1,11 +1,10 @@
 'use client';
 
-import Link from 'next/link';
-
 import Particles from '@/components/react-bits/particles';
 import SplitText from '@/components/react-bits/split-text';
 import ShinyText from '@/components/react-bits/shiny-text';
 import Magnet from '@/components/react-bits/magnet';
+import {smoothScroll} from '@/hooks/smooth-scroll';
 
 import {buttonVariants} from '@/components/ui/button';
 import {cn} from '@/lib/utils';
@@ -17,6 +16,8 @@ type HeroProps = {
 };
 
 export function Hero({name, headline}: HeroProps) {
+	const {scrollToSection} = smoothScroll();
+
 	return (
 		<section
 			id="home"
@@ -27,7 +28,6 @@ export function Hero({name, headline}: HeroProps) {
                 bg-charcoal
                 px-6
             ">
-			{/* Particles */}
 			<div className="absolute inset-0">
 				<Particles
 					particleColors={['#ffffff']}
@@ -42,7 +42,6 @@ export function Hero({name, headline}: HeroProps) {
 				/>
 			</div>
 
-			{/* Dark overlay */}
 			<div
 				className="
                     pointer-events-none
@@ -54,7 +53,6 @@ export function Hero({name, headline}: HeroProps) {
                 "
 			/>
 
-			{/* Gold glow */}
 			<div
 				className="
                     pointer-events-none
@@ -67,7 +65,6 @@ export function Hero({name, headline}: HeroProps) {
                 "
 			/>
 
-			{/* Hero content */}
 			<div
 				className="
                     relative z-10
@@ -76,7 +73,6 @@ export function Hero({name, headline}: HeroProps) {
                     flex-col items-center
                     text-center
                 ">
-				{/* Identity badge */}
 				<div
 					className="
                         mb-8 flex items-center gap-3
@@ -115,7 +111,6 @@ export function Hero({name, headline}: HeroProps) {
 					/>
 				</div>
 
-				{/* Main headline */}
 				<SplitText
 					text="I BUILD DIGITAL PRODUCTS THAT MATTER."
 					className="
@@ -146,7 +141,6 @@ export function Hero({name, headline}: HeroProps) {
 					textAlign="center"
 				/>
 
-				{/* Secondary line */}
 				<p
 					className="
                         mt-6 max-w-2xl
@@ -158,11 +152,11 @@ export function Hero({name, headline}: HeroProps) {
 						'I design and build thoughtful web and mobile experiences that solve real problems.'}
 				</p>
 
-				{/* CTA */}
 				<div className="mt-10 flex flex-wrap items-center justify-center gap-4">
 					<Magnet padding={40} disabled={false} magnetStrength={3}>
-						<Link
+						<a
 							href="#projects"
+							onClick={(event) => scrollToSection(event, '#projects')}
 							className={cn(
 								buttonVariants({
 									variant: 'default',
@@ -172,11 +166,12 @@ export function Hero({name, headline}: HeroProps) {
 							)}>
 							View My Work
 							<span>↗</span>
-						</Link>
+						</a>
 					</Magnet>
 
-					<Link
+					<a
 						href="#contact"
+						onClick={(event) => scrollToSection(event, '#contact')}
 						className={cn(
 							buttonVariants({
 								variant: 'outline',
@@ -186,21 +181,21 @@ export function Hero({name, headline}: HeroProps) {
 						)}>
 						Let&apos;s Talk
 						<span className="text-gold-light">↗</span>
-					</Link>
+					</a>
 				</div>
 			</div>
 
-			{/* Scroll hint */}
-			<Link
+			<a
 				href="#about"
+				onClick={(event) => scrollToSection(event, '#about')}
 				className="
-                    absolute bottom-8 left-1/2 z-10
-                    flex -translate-x-1/2
-                    flex-col items-center gap-3
-                    text-white/30
-                    transition
-                    hover:text-gold-light
-                ">
+					absolute bottom-8 left-1/2 z-10
+					flex -translate-x-1/2
+					flex-col items-center gap-3
+					text-white/30
+					transition
+					hover:text-gold-light
+				">
 				<span
 					className="
                         flex h-12 w-7
@@ -220,7 +215,7 @@ export function Hero({name, headline}: HeroProps) {
                     ">
 					Scroll to explore
 				</span>
-			</Link>
+			</a>
 		</section>
 	);
 }
