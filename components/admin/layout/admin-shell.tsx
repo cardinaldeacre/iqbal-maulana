@@ -1,5 +1,6 @@
 import type {ReactNode} from 'react';
 
+import {AdminMobileHeader} from './admin-mobile-header';
 import {AdminSidebar} from './admin-sidebar';
 
 type AdminShellProps = {
@@ -14,7 +15,11 @@ export function AdminShell({children}: AdminShellProps) {
 					<AdminSidebar />
 				</div>
 
-				<div className="min-w-0 flex-1">{children}</div>
+				<div className="min-w-0 flex-1">
+					<AdminMobileHeader />
+
+					{children}
+				</div>
 			</div>
 		</div>
 	);

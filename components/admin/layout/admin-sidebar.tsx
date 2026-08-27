@@ -1,20 +1,13 @@
+import {adminNavigation} from './admin-navigation';
 import {AdminNavLink} from './admin-nav-link';
-
-const adminNavigation = [
-	{href: '/admin', label: 'Dashboard'},
-	{href: '/admin/projects', label: 'Projects'},
-	{href: '/admin/experiences', label: 'Experiences'},
-	{href: '/admin/skills', label: 'Skills'},
-	{href: '/admin/achievements', label: 'Achievements'},
-	{href: '/admin/settings', label: 'Settings'},
-];
 
 export function AdminSidebar() {
 	return (
 		<aside
 			className="
+				sticky top-0 z-40
                 flex min-h-screen w-64 shrink-0 flex-col
-                border-r-4 border-gold/40
+                border-r border-gold/20
                 bg-charcoal p-5
                 shadow-[1px_0_0_rgba(179,145,82,0.08)]
                 ">
@@ -36,22 +29,22 @@ export function AdminSidebar() {
 				<a
 					href="/"
 					className="
-            block rounded-xl px-3 py-2
-            text-sm font-medium text-white/60
-            transition
-            hover:bg-white/5 hover:text-white
-          ">
+                        block rounded-xl px-3 py-2
+                        text-sm font-medium text-white/60
+                        transition
+                        hover:bg-white/5 hover:text-white
+                    ">
 					View Portfolio
 				</a>
 
 				<a
 					href="/auth/logout"
 					className="
-            mt-1 block rounded-xl px-3 py-2
-            text-sm font-medium text-red-400
-            transition
-            hover:bg-red-500/10 hover:text-red-300
-          ">
+                        mt-1 block rounded-xl px-3 py-2
+                        text-sm font-medium text-red-400
+                        transition
+                        hover:bg-red-500/10 hover:text-red-300
+                    ">
 					Logout
 				</a>
 			</div>

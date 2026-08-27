@@ -121,7 +121,11 @@ export function AdminMultiSelect({label, name, options, defaultValue = []}: Admi
 							bg-charcoal
 							p-2
 							shadow-2xl
-						">
+							animate-in
+							fade-in-0
+							slide-in-from-top-1
+							duration-150
+							">
 						{options.map((option) => {
 							const isSelected = selected.includes(option.value);
 
