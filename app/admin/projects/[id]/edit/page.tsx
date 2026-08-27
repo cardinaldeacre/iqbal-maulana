@@ -12,6 +12,7 @@ import {
 import {techStackOptions} from '@/app/constants/admin-options';
 import {updateProject} from '@/lib/actions/projects';
 import {getProjectById} from '@/lib/services/projects';
+import {RichTextEditor} from '@/components/admin/rich-text-editor';
 
 interface EditProjectPageProps {
 	params: Promise<{
@@ -45,12 +46,19 @@ export default async function EditProjectPage({params}: EditProjectPageProps) {
 
 				<AdminInput label="Slug" name="slug" required defaultValue={project.slug} />
 
-				<AdminTextarea
+				{/* <AdminTextarea
 					label="Description"
 					name="description"
 					rows={6}
 					required
 					defaultValue={project.description}
+				/> */}
+
+				<RichTextEditor
+					label="Description"
+					name="description"
+					defaultValue={project.description}
+					placeholder="Describe the project..."
 				/>
 
 				<AdminInput

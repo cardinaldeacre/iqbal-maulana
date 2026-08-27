@@ -10,6 +10,7 @@ import {
 import {techStackOptions} from '@/app/constants/admin-options';
 import {createProject} from '@/lib/actions/projects';
 import {AdminMultiSelect} from '@/components/admin/admin-multi-select';
+import {RichTextEditor} from '@/components/admin/rich-text-editor';
 
 export default function NewProjectPage() {
 	return (
@@ -25,7 +26,12 @@ export default function NewProjectPage() {
 
 				<AdminInput label="Slug" name="slug" required />
 
-				<AdminTextarea label="Description" name="description" rows={6} required />
+				{/* <AdminTextarea label="Description" name="description" rows={6} required /> */}
+				<RichTextEditor
+					label="Description"
+					name="description"
+					placeholder="Describe the project, its purpose, features, and technical implementation..."
+				/>
 
 				<AdminInput label="GitHub URL" name="github_url" type="url" />
 
