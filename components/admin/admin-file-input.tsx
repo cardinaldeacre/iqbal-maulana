@@ -8,7 +8,7 @@ type AdminFileInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> &
 export function AdminFileInput({label, hint, name, className = '', ...props}: AdminFileInputProps) {
 	return (
 		<div className="space-y-2">
-			<label htmlFor={name} className="block text-sm font-medium text-foreground">
+			<label htmlFor={name} className="block text-sm font-medium text-surface">
 				{label}
 			</label>
 

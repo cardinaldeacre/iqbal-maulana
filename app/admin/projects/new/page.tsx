@@ -4,12 +4,12 @@ import {
 	AdminCheckbox,
 	AdminFileInput,
 	AdminInput,
-	AdminSelect,
 	AdminSubmitButton,
 	AdminTextarea,
 } from '@/components/admin';
 import {techStackOptions} from '@/app/constants/admin-options';
 import {createProject} from '@/lib/actions/projects';
+import {AdminMultiSelect} from '@/components/admin/admin-multi-select';
 
 export default function NewProjectPage() {
 	return (
@@ -23,7 +23,7 @@ export default function NewProjectPage() {
 			<form action={createProject} className="mt-8 space-y-6">
 				<AdminInput label="Project Title" name="title" required />
 
-				<AdminInput label="Slug" name="slug" required placeholder="waristmate" />
+				<AdminInput label="Slug" name="slug" required />
 
 				<AdminTextarea label="Description" name="description" rows={6} required />
 
@@ -31,7 +31,7 @@ export default function NewProjectPage() {
 
 				<AdminInput label="Live URL" name="live_url" type="url" />
 
-				<AdminSelect label="Tech Stack" name="tech_stack" multiple options={techStackOptions} />
+				<AdminMultiSelect label="Tech Stack" name="tech_stack" options={techStackOptions} />
 
 				<AdminInput
 					label="Display Order"

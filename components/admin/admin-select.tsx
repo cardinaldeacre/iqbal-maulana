@@ -24,7 +24,7 @@ export function AdminSelect({
 
 	return (
 		<div className="space-y-2">
-			<label htmlFor={selectId} className="block text-sm font-medium text-foreground">
+			<label htmlFor={selectId} className="block text-sm font-medium text-surface">
 				{label}
 			</label>
 
@@ -33,7 +33,7 @@ export function AdminSelect({
 				name={name}
 				className={[
 					'w-full rounded-xl border border-border',
-					'bg-surface px-4 py-3 text-graphite',
+					'bg-sand-light px-4 py-3 text-graphite',
 					'outline-none transition',
 					'focus:border-accent focus:ring-2 focus:ring-accent/15',
 					className,

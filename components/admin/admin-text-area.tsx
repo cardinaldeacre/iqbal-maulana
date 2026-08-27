@@ -19,7 +19,7 @@ export function AdminTextarea({
 
 	return (
 		<div className="space-y-2">
-			<label htmlFor={textareaId} className="block text-sm font-medium text-foreground">
+			<label htmlFor={textareaId} className="block text-sm font-medium text-surface">
 				{label}
 			</label>
 

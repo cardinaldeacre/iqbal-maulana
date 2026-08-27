@@ -19,7 +19,7 @@ export function AdminInput({
 
 	return (
 		<div className="space-y-2">
-			<label htmlFor={inputId} className="block text-sm font-medium text-foreground">
+			<label htmlFor={inputId} className="block text-sm font-medium text-surface">
 				{label}
 			</label>
 
