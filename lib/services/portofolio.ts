@@ -108,11 +108,24 @@ export async function getPublicPortfolioData() {
         })
     );
 
+    const experiences = experiencesResult.data.map(
+        (experience) => ({
+            ...experience,
+
+            description: experience.description
+                ? sanitizeHtml(
+                    experience.description,
+                    SANITIZE_OPTIONS
+                )
+                : null,
+        })
+    );
+
     return {
         profile: profileResult.data,
         featuredProjects,
         skills: skillsResult.data,
-        experiences: experiencesResult.data,
+        experiences: experiences,
         achievements: achievementsResult.data,
     };
 }

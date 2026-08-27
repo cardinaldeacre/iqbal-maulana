@@ -123,7 +123,60 @@ export function ExperienceTimeline({experiences}: ExperienceTimelineProps) {
 												</div>
 
 												{experience.description && (
-													<p className="mt-5 leading-7 text-stone">{experience.description}</p>
+													<div
+														className="
+															prose
+															mt-5 max-w-none
+
+															prose-p:my-2
+															prose-p:leading-7
+															prose-p:text-charcoal/75
+
+															prose-headings:mt-5
+															prose-headings:mb-2
+															prose-headings:font-semibold
+															prose-headings:text-charcoal
+
+															prose-strong:font-semibold
+															prose-strong:text-charcoal
+
+															prose-em:text-charcoal/70
+
+															prose-ul:my-3
+															prose-ul:pl-5
+
+															prose-ol:my-3
+															prose-ol:pl-5
+
+															prose-li:my-1
+															prose-li:leading-7
+															prose-li:text-charcoal/75
+															prose-li:marker:text-gold-dark
+
+															prose-blockquote:my-4
+															prose-blockquote:border-gold
+															prose-blockquote:text-charcoal/65
+
+															prose-a:font-medium
+															prose-a:text-gold-dark
+															prose-a:underline
+															prose-a:decoration-gold/40
+															prose-a:underline-offset-4
+															hover:prose-a:text-charcoal
+
+															prose-code:rounded-md
+															prose-code:bg-charcoal/5
+															prose-code:px-1.5
+															prose-code:py-0.5
+															prose-code:text-charcoal
+
+															prose-pre:bg-charcoal
+															prose-pre:text-sand-light
+														"
+														dangerouslySetInnerHTML={{
+															__html: experience.description,
+														}}
+													/>
 												)}
 
 												{experience.tech_stack.length > 0 && (
