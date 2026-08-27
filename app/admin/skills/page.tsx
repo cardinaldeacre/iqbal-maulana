@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import {AdminEmptyState, AdminPageHeader} from '@/app/components/admin';
+import {AdminEmptyState, AdminPageHeader} from '@/components/admin';
 
-import {DeleteSkillButton} from '@/app/components/admin/skills/delete-skill-button';
+import {DeleteSkillButton} from '@/components/admin/skills/delete-skill-button';
 import {getSkills} from '@/lib/services/skills';
 
 export default async function SkillsPage() {

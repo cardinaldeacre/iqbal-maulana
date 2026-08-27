@@ -1,7 +1,7 @@
-import {AdminPageHeader, DashboardSummaryCard} from '@/app/components/admin';
+import {AdminPageHeader, DashboardSummaryCard} from '@/components/admin';
 
 import {getDashboardSummary} from '@/lib/services/dashboard';
-import {AdminSidebar} from '../components/admin/layout/admin-sidebar';
+import {AdminSidebar} from '../../components/admin/layout/admin-sidebar';
 
 export default async function AdminPage() {
 	const summary = await getDashboardSummary();

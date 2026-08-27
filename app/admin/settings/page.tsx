@@ -4,7 +4,7 @@ import {
 	AdminPageHeader,
 	AdminSubmitButton,
 	AdminTextarea,
-} from '@/app/components/admin';
+} from '@/components/admin';
 import {saveProfile} from '@/lib/actions/profile';
 import {getProfile} from '@/lib/services/profile';
 

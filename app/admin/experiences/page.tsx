@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import {AdminEmptyState, AdminPageHeader} from '@/app/components/admin';
+import {AdminEmptyState, AdminPageHeader} from '@/components/admin';
 
-import {DeleteExperienceButton} from '@/app/components/admin/experiences/delete-experience-button';
+import {DeleteExperienceButton} from '@/components/admin/experiences/delete-experience-button';
 import {getExperiences} from '@/lib/services/experiences';
 
 export default async function ExperiencesPage() {

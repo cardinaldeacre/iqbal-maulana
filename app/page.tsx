@@ -6,10 +6,10 @@ import {
 	Navbar,
 	TechStack,
 	Footer,
-} from '@/app/components/portofolio';
+} from '@/components/portofolio';
 
 import {getPublicPortfolioData} from '@/lib/services/portofolio';
-import {ExperienceTimeline} from './components/portofolio/experience-timeline';
+import {ExperienceTimeline} from '../components/portofolio/experience-timeline';
 
 export default async function HomePage() {
 	const {profile, featuredProjects, experiences, skills, achievements} =

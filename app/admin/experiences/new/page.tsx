@@ -1,91 +1,51 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 import {
-    AdminCheckbox,
-    AdminInput,
-    AdminSelect,
-    AdminSubmitButton,
-    AdminTextarea,
-} from "@/app/components/admin";
-import { techStackOptions } from "@/app/constants/admin-options";
-import { createExperience } from "@/lib/actions/experiences";
-
+	AdminCheckbox,
+	AdminInput,
+	AdminSelect,
+	AdminSubmitButton,
+	AdminTextarea,
+} from '@/components/admin';
+import {techStackOptions} from '@/app/constants/admin-options';
+import {createExperience} from '@/lib/actions/experiences';
 
 export default function NewExperiencePage() {
-    return (
-        <main className="mx-auto max-w-3xl p-8">
-            <Link
-                href="/admin/experiences"
-                className="text-sm text-neutral-500"
-            >
-                ← Back
-            </Link>
+	return (
+		<main className="mx-auto max-w-3xl p-8">
+			<Link href="/admin/experiences" className="text-sm text-neutral-500">
+				← Back
+			</Link>
 
-            <h1 className="mt-6 text-3xl font-bold">
-                Add Experience
-            </h1>
+			<h1 className="mt-6 text-3xl font-bold">Add Experience</h1>
 
-            <form
-                action={createExperience}
-                className="mt-8 space-y-6"
-            >
-                <AdminInput
-                    label="Organization"
-                    name="organization"
-                    required
-                />
+			<form action={createExperience} className="mt-8 space-y-6">
+				<AdminInput label="Organization" name="organization" required />
 
-                <AdminInput
-                    label="Position"
-                    name="position"
-                    required
-                />
+				<AdminInput label="Position" name="position" required />
 
-                <AdminTextarea
-                    label="Description"
-                    name="description"
-                    rows={5}
-                />
+				<AdminTextarea label="Description" name="description" rows={5} />
 
-                <div className="grid grid-cols-2 gap-4">
-                    <AdminInput
-                        label="Start Date"
-                        name="start_date"
-                        type="date"
-                        required
-                    />
+				<div className="grid grid-cols-2 gap-4">
+					<AdminInput label="Start Date" name="start_date" type="date" required />
 
-                    <AdminInput
-                        label="End Date"
-                        name="end_date"
-                        type="date"
-                    />
-                </div>
+					<AdminInput label="End Date" name="end_date" type="date" />
+				</div>
 
-                <AdminCheckbox
-                    label="Current position"
-                    name="is_current"
-                />
+				<AdminCheckbox label="Current position" name="is_current" />
 
-                <AdminSelect
-                    label="Tech Stack"
-                    name="tech_stack"
-                    options={techStackOptions}
-                    multiple
-                />
+				<AdminSelect label="Tech Stack" name="tech_stack" options={techStackOptions} multiple />
 
-                <AdminInput
-                    label="Display Order"
-                    name="display_order"
-                    type="number"
-                    min="0"
-                    defaultValue="0"
-                />
+				<AdminInput
+					label="Display Order"
+					name="display_order"
+					type="number"
+					min="0"
+					defaultValue="0"
+				/>
 
-                <AdminSubmitButton>
-                    Create Experience
-                </AdminSubmitButton>
-            </form>
-        </main>
-    );
+				<AdminSubmitButton>Create Experience</AdminSubmitButton>
+			</form>
+		</main>
+	);
 }

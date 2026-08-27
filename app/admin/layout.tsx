@@ -1,22 +1,18 @@
-import { redirect } from "next/navigation";
+import {redirect} from 'next/navigation';
 
-import { AdminShell } from "@/app/components/admin/layout/admin-shell";
-import { isAdmin } from "@/lib/auth/admin";
+import {AdminShell} from '@/components/admin/layout/admin-shell';
+import {isAdmin} from '@/lib/auth/admin';
 
 export default async function AdminLayout({
-    children,
+	children,
 }: Readonly<{
-    children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-    const admin = await isAdmin();
+	const admin = await isAdmin();
 
-    if (!admin) {
-        redirect("/login");
-    }
+	if (!admin) {
+		redirect('/login');
+	}
 
-    return (
-        <AdminShell>
-            {children}
-        </AdminShell>
-    );
+	return <AdminShell>{children}</AdminShell>;
 }

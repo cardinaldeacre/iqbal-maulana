@@ -8,7 +8,7 @@ import {
 	AdminSelect,
 	AdminSubmitButton,
 	AdminTextarea,
-} from '@/app/components/admin';
+} from '@/components/admin';
 import {techStackOptions} from '@/app/constants/admin-options';
 import {updateProject} from '@/lib/actions/projects';
 import {getProjectById} from '@/lib/services/projects';

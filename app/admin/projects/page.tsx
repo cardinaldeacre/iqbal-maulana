@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import {AdminEmptyState, AdminPageHeader} from '@/app/components/admin';
-import {DeleteProjectButton} from '@/app/components/admin/projects/delete-project-button';
+import {AdminEmptyState, AdminPageHeader} from '@/components/admin';
+import {DeleteProjectButton} from '@/components/admin/projects/delete-project-button';
 import {getProjects} from '@/lib/services/projects';
 
 export default async function ProjectsPage() {

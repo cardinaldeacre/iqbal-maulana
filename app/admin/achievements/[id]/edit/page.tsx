@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
 
-import {AdminFileInput, AdminInput, AdminSubmitButton, AdminTextarea} from '@/app/components/admin';
+import {AdminFileInput, AdminInput, AdminSubmitButton, AdminTextarea} from '@/components/admin';
 
 import {updateAchievement} from '@/lib/actions/achievements';
 import {getAchievementById} from '@/lib/services/achievements';

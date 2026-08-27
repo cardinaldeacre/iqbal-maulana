@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import {useEffect, useState} from 'react';
 
 import {cn} from '@/lib/utils';
@@ -34,14 +33,14 @@ export function Navbar({name}: {name?: string | null}) {
 				scrolled ? 'border-b border-white/10 bg-charcoal/75 backdrop-blur-xl' : 'bg-transparent'
 			)}>
 			<div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-				<Link href="/" className="font-bold tracking-tight text-white">
+				<a href="/" className="font-bold tracking-tight text-white">
 					{name ?? 'Portfolio'}
 					<span className="text-gold">.</span>
-				</Link>
+				</a>
 
 				<nav className="hidden items-center gap-8 md:flex">
 					{navigation.map((item) => (
-						<Link
+						<a
 							key={item.href}
 							href={item.href}
 							className="
@@ -51,11 +50,11 @@ export function Navbar({name}: {name?: string | null}) {
 								hover:text-white
 							">
 							{item.label}
-						</Link>
+						</a>
 					))}
 				</nav>
 
-				<Link
+				<a
 					href="#contact"
 					className="
 						rounded-full
@@ -68,7 +67,7 @@ export function Navbar({name}: {name?: string | null}) {
 						hover:text-charcoal
 					">
 					Let&apos;s Talk
-				</Link>
+				</a>
 			</div>
 		</header>
 	);

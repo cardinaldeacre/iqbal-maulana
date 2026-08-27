@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import {AdminEmptyState, AdminPageHeader} from '@/app/components/admin';
+import {AdminEmptyState, AdminPageHeader} from '@/components/admin';
 
-import {DeleteAchievementButton} from '@/app/components/admin/achievement/delete-achievement-button';
+import {DeleteAchievementButton} from '@/components/admin/achievement/delete-achievement-button';
 import {getAchievements} from '@/lib/services/achievements';
 
 export default async function AchievementsPage() {

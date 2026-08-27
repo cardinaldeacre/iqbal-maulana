@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
-import {AdminInput, AdminSelect, AdminSubmitButton} from '@/app/components/admin';
+import {AdminInput, AdminSelect, AdminSubmitButton} from '@/components/admin';
 import {updateSkill} from '@/lib/actions/skills';
 import {getSkillById} from '@/lib/services/skills';
 import {skillCategories} from '@/app/constants/admin-options';

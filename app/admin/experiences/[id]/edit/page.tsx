@@ -7,7 +7,7 @@ import {
 	AdminSelect,
 	AdminSubmitButton,
 	AdminTextarea,
-} from '@/app/components/admin';
+} from '@/components/admin';
 import {techStackOptions} from '@/app/constants/admin-options';
 import {updateExperience} from '@/lib/actions/experiences';
 import {getExperienceById} from '@/lib/services/experiences';
