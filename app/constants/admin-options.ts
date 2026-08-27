@@ -11,10 +11,17 @@ export const skillCategories = [
 export const techStackOptions = [
     { label: "Next.js", value: "Next.js" },
     { label: "React", value: "React" },
-    { label: "Laravel", value: "Laravel" },
     { label: "Flutter", value: "Flutter" },
+    { label: "Kotlin", value: "Kotlin" },
+    { label: "Laravel", value: "Laravel" },
     { label: "Node.js", value: "Node.js" },
     { label: "Express.js", value: "Express.js" },
+    { label: "NestJS", value: "NestJS" },
+    { label: "Bun", value: "Bun" },
+    { label: "GoLang", value: "GoLang" },
     { label: "PostgreSQL", value: "PostgreSQL" },
+    { label: "MySQL", value: "MySQL" },
+    { label: "Docker", value: "Docker" },
     { label: "Supabase", value: "Supabase" },
+    { label: "Firebase", value: "Firebase" },
 ];
