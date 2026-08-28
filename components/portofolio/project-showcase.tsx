@@ -73,7 +73,7 @@ export function ProjectShowcase({project, index}: ProjectShowcaseProps) {
 				<div
 					className="
                         group relative
-                        aspect-16/10
+                        aspect-video
                         overflow-hidden
                         rounded-3xl
                         border border-white/10
