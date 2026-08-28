@@ -6,6 +6,7 @@ import {
 	Navbar,
 	TechStack,
 	Footer,
+	Achievements,
 } from '@/components/portofolio';
 
 import {getPublicPortfolioData} from '@/lib/services/portofolio';
@@ -28,6 +29,8 @@ export default async function HomePage() {
 			<FeaturedProjects projects={featuredProjects} />
 
 			<ExperienceTimeline experiences={experiences} />
+
+			<Achievements achievements={achievements} />
 
 			<Contact
 				email={profile?.email}
