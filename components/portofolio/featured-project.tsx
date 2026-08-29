@@ -1,5 +1,4 @@
 import {FadeIn} from '@/components/motion';
-
 import {ProjectShowcase} from './project-showcase';
 
 type Project = {
@@ -23,32 +22,44 @@ export function FeaturedProjects({projects}: FeaturedProjectsProps) {
 		<section
 			id="projects"
 			className="
-                relative overflow-hidden
-                bg-graphite
-                py-28
-                text-white
-                sm:py-32
-            ">
+        relative
+        overflow-hidden
+        bg-graphite
+        py-28
+        text-white
+        sm:py-32
+      ">
 			<div
-				className="
-                    absolute inset-x-0 top-0
-                    h-px
-                    bg-linear-to-r
-                    from-transparent
-                    via-gold/40
-                    to-transparent
-                "
-			/>
-			<div
-				className="
-                pointer-events-none
-                absolute left-1/2 top-0
-                h-125 w-175
-                -translate-x-1/2
-                rounded-full
-                bg-gold/4
-                blur-3xl
-                "
+				className="pointer-events-none absolute inset-0 opacity-90"
+				style={{
+					backgroundImage: `
+        radial-gradient(
+          ellipse at 45% 50%,
+          rgba(190,145,60,0.20) 0%,
+          rgba(190,145,60,0.10) 24%,
+          transparent 52%
+        ),
+
+        radial-gradient(
+          ellipse at 60% 54%,
+          rgba(135,135,130,0.12) 0%,
+          rgba(135,135,130,0.06) 24%,
+          transparent 50%
+        ),
+
+        linear-gradient(
+          to bottom,
+          rgba(62,59,53,0.20) 0%,
+          rgba(62,59,53,0.08) 16%,
+          transparent 34%,
+          transparent 66%,
+          rgba(62,59,53,0.08) 84%,
+          rgba(62,59,53,0.20) 100%
+        )
+      `,
+					backgroundSize: '100% 1050px',
+					backgroundRepeat: 'repeat-y',
+				}}
 			/>
 
 			<div className="relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -59,22 +70,22 @@ export function FeaturedProjects({projects}: FeaturedProjectsProps) {
 
 							<p
 								className="
-                                text-sm font-medium
-                                uppercase
-                                tracking-[0.25em]
-                                text-gold-light
-                                ">
+									text-sm font-medium
+									uppercase
+									tracking-[0.25em]
+									text-gold-light
+								">
 								Selected Work
 							</p>
 						</div>
 
 						<h2
 							className="
-                                mt-5
-                                text-4xl font-bold
-                                tracking-[-0.04em]
-                                sm:text-6xl
-                            ">
+								mt-5
+								text-4xl font-bold
+								tracking-[-0.04em]
+								sm:text-6xl
+							">
 							Projects built around
 							<span className="block text-white/35">real problems.</span>
 						</h2>
@@ -89,12 +100,14 @@ export function FeaturedProjects({projects}: FeaturedProjectsProps) {
 				{projects.length === 0 ? (
 					<div
 						className="
-                        mt-20 rounded-3xl
-                        border border-dashed
-                        border-white/10
-                        p-12 text-center
-                        text-white/40
-                        ">
+							mt-20
+							rounded-3xl
+							border border-dashed
+							border-white/10
+							p-12
+							text-center
+							text-white/40
+							">
 						Featured projects are coming soon.
 					</div>
 				) : (
