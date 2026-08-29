@@ -51,7 +51,7 @@ export function Footer({name, githubUrl, linkedinUrl}: FooterProps) {
 						</Link>
 					)}
 
-					<Link href="#" className="text-sm text-white/45 transition hover:text-gold-light">
+					<Link href="#home" className="text-sm text-white/45 transition hover:text-gold-light">
 						Back to top ↑
 					</Link>
 				</div>

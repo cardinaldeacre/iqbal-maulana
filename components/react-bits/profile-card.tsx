@@ -631,7 +631,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 								<h3
 									className="font-semibold m-0"
 									style={{
-										fontSize: 'min(5svh, 3em)',
+										fontSize: 'clamp(1.5rem, 4vw, 2.25rem)',
 										backgroundImage: 'linear-gradient(to bottom, #fff, #6f6fbe)',
 										backgroundSize: '1em 1.5em',
 										WebkitTextFillColor: 'transparent',
