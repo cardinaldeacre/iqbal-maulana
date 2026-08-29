@@ -184,3 +184,149 @@ html {
 	height: 0;
 	pointer-events: none;
 }
+
+.pc-code-pattern {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	overflow: hidden;
+	border-radius: inherit;
+	pointer-events: none;
+
+	opacity: 0.18;
+
+	mask-image: radial-gradient(
+		circle 130px at var(--pointer-x) var(--pointer-y),
+		black 0%,
+		rgba(0, 0, 0, 0.95) 25%,
+		rgba(0, 0, 0, 0.3) 65%,
+		transparent 100%
+	);
+
+	-webkit-mask-image: radial-gradient(
+		circle 130px at var(--pointer-x) var(--pointer-y),
+		black 0%,
+		rgba(0, 0, 0, 0.95) 25%,
+		rgba(0, 0, 0, 0.3) 65%,
+		transparent 100%
+	);
+
+	transition:
+		opacity 300ms ease,
+		filter 300ms ease;
+}
+
+.pc-code-pattern span {
+	position: absolute;
+
+	font-family: monospace;
+	font-size: 22px;
+	font-weight: 700;
+
+	color: rgba(198, 151, 68, 0.8);
+
+	opacity: 0.2;
+
+	transition:
+		opacity 250ms ease,
+		text-shadow 250ms ease,
+		transform 250ms ease;
+}
+
+.pc-code-pattern span:nth-child(1) {
+	left: 8%;
+	top: 12%;
+}
+.pc-code-pattern span:nth-child(2) {
+	left: 70%;
+	top: 8%;
+}
+.pc-code-pattern span:nth-child(3) {
+	left: 27%;
+	top: 23%;
+}
+.pc-code-pattern span:nth-child(4) {
+	left: 83%;
+	top: 29%;
+}
+.pc-code-pattern span:nth-child(5) {
+	left: 5%;
+	top: 39%;
+}
+.pc-code-pattern span:nth-child(6) {
+	left: 56%;
+	top: 43%;
+}
+.pc-code-pattern span:nth-child(7) {
+	left: 78%;
+	top: 53%;
+}
+.pc-code-pattern span:nth-child(8) {
+	left: 19%;
+	top: 58%;
+}
+.pc-code-pattern span:nth-child(9) {
+	left: 47%;
+	top: 66%;
+}
+.pc-code-pattern span:nth-child(10) {
+	left: 87%;
+	top: 72%;
+}
+.pc-code-pattern span:nth-child(11) {
+	left: 6%;
+	top: 78%;
+}
+.pc-code-pattern span:nth-child(12) {
+	left: 34%;
+	top: 84%;
+}
+.pc-code-pattern span:nth-child(13) {
+	left: 69%;
+	top: 88%;
+}
+.pc-code-pattern span:nth-child(14) {
+	left: 49%;
+	top: 15%;
+}
+.pc-code-pattern span:nth-child(15) {
+	left: 10%;
+	top: 67%;
+}
+.pc-code-pattern span:nth-child(16) {
+	left: 63%;
+	top: 31%;
+}
+.pc-code-pattern span:nth-child(17) {
+	left: 35%;
+	top: 48%;
+}
+.pc-code-pattern span:nth-child(18) {
+	left: 82%;
+	top: 18%;
+}
+
+.pc-code-pattern span:nth-child(3n) {
+	font-size: 16px;
+	transform: rotate(-10deg);
+}
+
+.pc-code-pattern span:nth-child(4n) {
+	font-size: 28px;
+	transform: rotate(8deg);
+}
+
+.group.active .pc-code-pattern,
+.group:hover .pc-code-pattern {
+	opacity: 0.9;
+	filter: brightness(1.2);
+}
+
+.group.active .pc-code-pattern span,
+.group:hover .pc-code-pattern span {
+	opacity: 0.85;
+
+	text-shadow:
+		0 0 8px rgba(198, 151, 68, 0.5),
+		0 0 20px rgba(198, 151, 68, 0.2);
+}

@@ -22,7 +22,12 @@ export default async function HomePage() {
 
 			<Hero name={profile?.name} headline={profile?.headline} bio={profile?.bio} />
 
-			<About bio={profile?.bio} />
+			<About
+				bio={profile?.bio}
+				avatarUrl={profile?.avatar_url}
+				name={profile?.name}
+				headline={profile?.headline}
+			/>
 
 			<TechStack skills={skills} />
 
