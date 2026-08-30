@@ -525,7 +525,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 						<div
 							className="overflow-visible"
 							style={{
-								mixBlendMode: 'luminosity',
+								// mixBlendMode: 'luminosity',
 								transform: 'translateZ(2px)',
 								gridArea: '1 / -1',
 								borderRadius: cardRadius,
@@ -538,6 +538,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 								alt={`${name || 'User'} avatar`}
 								loading="lazy"
 								style={{
+									filter: 'grayscale(35%) sepia(20%) saturate(80%) contrast(105%) brightness(92%)',
 									transformOrigin: '50% 100%',
 									transform:
 										'translateX(calc(-50% + (var(--pointer-from-left) - 0.5) * 6px)) translateZ(0) scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01))',
