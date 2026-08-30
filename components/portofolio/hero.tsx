@@ -109,6 +109,7 @@ export function Hero({name, headline}: HeroProps) {
                             sm:text-sm
                         "
 					/>
+					<span className="size-2 rounded-full bg-gold" />
 				</div>
 
 				<SplitText
@@ -140,17 +141,6 @@ export function Hero({name, headline}: HeroProps) {
 					rootMargin="-100px"
 					textAlign="center"
 				/>
-
-				<p
-					className="
-                        mt-6 max-w-2xl
-                        text-sm leading-7
-                        text-white/45
-                        sm:text-base
-                    ">
-					{headline ??
-						'I design and build thoughtful web and mobile experiences that solve real problems.'}
-				</p>
 
 				<div className="mt-10 flex flex-wrap items-center justify-center gap-4">
 					<Magnet padding={40} disabled={false} magnetStrength={3}>

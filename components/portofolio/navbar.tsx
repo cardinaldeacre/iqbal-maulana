@@ -30,10 +30,10 @@ export function Navbar({name}: {name?: string | null}) {
 	return (
 		<header
 			className={cn(
-				'fixed inset-x-0 top-0 z-50 transition-all duration-300',
+				'fixed inset-x-0 top-0 z-50 transition-all duration-300 lg:mx-50 mx-4 my-4 rounded-full',
 				scrolled ? 'border-b border-white/10 bg-charcoal/75 backdrop-blur-xl' : 'bg-transparent'
 			)}>
-			<div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
+			<div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-3 lg:px-8">
 				<a
 					href="/"
 					onClick={(event) => scrollToSection(event, '#home')}

@@ -38,7 +38,7 @@ export function Achievements({achievements}: AchievementsProps) {
 						<span className="h-px w-10 bg-gold" />
 
 						<p className="text-sm font-medium uppercase tracking-[0.25em] text-gold-dark">
-							Achievements
+							Achievements & Certifications
 						</p>
 					</div>
 
